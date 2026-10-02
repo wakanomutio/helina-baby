@@ -1,0 +1,1184 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HeLina Baby — We Hear You</title>
+
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <!-- =========================
+     FIGMA NAVIGATION
+========================== -->
+<header
+
+    class="relative z-50 border-b-[2px] border-[#25A3A4]"
+    style="background-image: url('{% static 'assets/images/Fabric_piece4.png' %}');
+           background-size: 100% 100%;
+           background-position: center;
+           background-repeat: no-repeat;"
+>
+
+    <div
+        class="relative mx-auto
+               flex h-[94px]
+               max-w-[1920px]
+               items-center
+               px-8
+               md:px-12
+               lg:px-[4.5vw]"
+    >
+
+        <!-- =====================
+             LEFT NAVIGATION
+        ====================== -->
+        <nav
+            class="flex items-center
+                   gap-8
+                   md:gap-10
+                   lg:gap-12"
+        >
+
+            <a
+                href="#about"
+                class="group relative
+                       font-['Inter']
+                       text-[13px]
+                       font-medium
+                       uppercase
+                       tracking-[0.20em]
+                       text-[#513A15]"
+            >
+                About
+
+                <span
+                    class="absolute -bottom-2 left-0
+                           h-[1px] w-0
+                           bg-[#B82D37]
+                           transition-all duration-300
+                           group-hover:w-full"
+                ></span>
+            </a>
+
+
+            <a
+                href="#story"
+                class="group relative
+                       font-['Inter']
+                       text-[13px]
+                       font-medium
+                       uppercase
+                       tracking-[0.20em]
+                       text-[#513A15]"
+            >
+                Our Story
+
+                <span
+                    class="absolute -bottom-2 left-0
+                           h-[1px] w-0
+                           bg-[#B82D37]
+                           transition-all duration-300
+                           group-hover:w-full"
+                ></span>
+            </a>
+
+        </nav>
+
+
+        <!-- =====================
+             CENTRED LOGO
+        ====================== -->
+        <a
+            href="/"
+            aria-label="HeLina Baby home"
+            class="absolute left-1/2
+                   top-1/2
+                   -translate-x-1/2
+                   -translate-y-1/2"
+        >
+
+            <img
+                src="{% static 'assets/logo/helina-primary-logo.svg' %}"
+                alt="HeLina Baby"
+                class="block
+                       w-[145px]
+                       md:w-[165px]
+                       lg:w-[180px]"
+            >
+
+        </a>
+
+
+        <!-- =====================
+             RIGHT NAVIGATION
+        ====================== -->
+        <nav
+            class="ml-auto
+                   flex items-center
+                   gap-8
+                   md:gap-10
+                   lg:gap-12"
+        >
+
+            <a
+                href="#support"
+                class="group relative
+                       font-['Inter']
+                       text-[13px]
+                       font-medium
+                       uppercase
+                       tracking-[0.20em]
+                       text-[#513A15]"
+            >
+                Support
+
+                <span
+                    class="absolute -bottom-2 left-0
+                           h-[1px] w-0
+                           bg-[#B82D37]
+                           transition-all duration-300
+                           group-hover:w-full"
+                ></span>
+            </a>
+
+
+            <a
+                href="#contact"
+                class="group relative
+                       font-['Inter']
+                       text-[13px]
+                       font-medium
+                       uppercase
+                       tracking-[0.20em]
+                       text-[#513A15]"
+            >
+                Contact
+
+                <span
+                    class="absolute -bottom-2 left-0
+                           h-[1px] w-0
+                           bg-[#B82D37]
+                           transition-all duration-300
+                           group-hover:w-full"
+                ></span>
+            </a>
+
+        </nav>
+
+
+        <!-- =====================
+             MOBILE MENU BUTTON
+        ====================== -->
+        <button
+            type="button"
+            aria-label="Open navigation menu"
+            class="ml-auto
+                   hidden
+                   h-10 w-10
+                   items-center
+                   justify-center
+                   border border-[#513A15]
+                   text-[#513A15]
+                   md:hidden"
+        >
+            <span class="text-lg">☰</span>
+        </button>
+
+    </div>
+
+</header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <main>
+
+        <section
+            class="relative min-h-[calc(100vh-92px)] overflow-hidden border-b-[8px] border-[#25A3A4]"
+        >
+
+            <!-- Hero image -->
+            <img
+                src="{% static 'assets/images/hero-family-couch.png' %}"
+                alt="Caregiver and child together"
+                class="absolute inset-0 h-full w-full object-cover"
+            >
+
+            <!-- Image overlay -->
+            <div class="absolute inset-0 bg-black/20"></div>
+
+
+            <!-- Coming Soon label -->
+            <!-- Interactive Coming Soon -->
+<a
+    href="#waitlist"
+    id="comingSoonBadge"
+    class="coming-soon-badge group absolute left-6 top-8 z-30
+           flex min-h-[70px] min-w-[190px]
+           items-center justify-center
+           border-2 border-white
+           bg-[#F85E29]
+           px-7 py-4
+           shadow-[6px_6px_0_rgba(81,58,21,0.25)]
+           md:left-12 md:top-10
+           lg:left-[4.5vw] lg:top-12"
+    aria-label="Coming soon — join the waitlist"
+>
+    <span
+        class="font-['Inter']
+               text-sm font-extrabold
+               uppercase
+               tracking-[0.2em]
+               text-white"
+    >
+        Coming Soon
+    </span>
+
+    <!-- animated corner -->
+    <span
+        class="coming-soon-corner absolute
+               -right-3 -top-3
+               h-5 w-5
+               rounded-full
+               bg-[#2EE0E0]"
+    ></span>
+</a>
+
+
+            <!-- Hero content -->
+<!-- Hero content -->
+<div class="relative z-10 flex min-h-[calc(100vh-100px)] items-end px-6 pb-5 md:px-12 md:pb-7 lg:px-20 lg:pb-9">
+
+    <div class="max-w-[340px] text-white">
+
+        <p class="mb-3 font-['Inter'] text-[11px] font-bold uppercase tracking-[0.28em] text-white/90">
+            HeLina Baby
+        </p>
+
+        <h1
+            class="font-['Helina Baby']
+                   text-[clamp(2.7rem,4vw,4.4rem)]
+                   leading-[0.88]
+                   tracking-[-0.02em]"
+        >
+            Made for
+            <span class="block">every kind </span>
+            <span class="block">of day.</span>
+        </h1>
+
+        <p
+            class="mt-4 max-w-[320px]
+                   font-['Inter']
+                   text-sm leading-6
+                   text-white md:text-base md:leading-7"
+        >
+            Thoughtful design and honest support for the real journey of raising a child.
+        </p>
+
+        <a
+            href="#waitlist"
+            class="mt-5 inline-flex items-center
+                   border-2 border-[#513A15]
+                   bg-[#F85E29]
+                   px-6 py-3
+                   font-['Inter']
+                   text-xs font-extrabold
+                   uppercase tracking-[0.14em]
+                   text-white
+                   transition-all duration-300
+                   hover:-translate-y-1
+                   hover:bg-[#B82D37]"
+        >
+            Join the Waitlist
+        </a>
+
+    </div>
+
+</div>
+
+        </section>
+
+
+          <!-- =========================================
+     SECTION 2 — WE HEAR YOU
+========================================= -->
+<section id="story" class="we-hear-you">
+
+
+
+    <!-- LEFT: Figma artwork -->
+    <div class="we-hear-you-artwork">
+        <img
+            src="{% static 'assets/images/2mart.png' %}"
+            alt="We Hear You."
+        >
+    </div>
+
+    <!-- RIGHT: Figma text -->
+    <div class="we-hear-you-copy">
+
+        <h2 class="we-hear-you-heading">
+            Your house is a mess. The shower’s calling.<br>
+            You can’t decide between food or sleep<br>
+            and your baby just wants to be held.
+        </h2>
+
+        <h3 class="we-hear-you-script">
+            We Hear You.
+        </h3>
+
+        <p class="we-hear-you-description">
+            Parenting doesn’t look like what you see on Insta.
+            Some days, getting anything done feels like a win.
+            But your baby doesn’t need a perfect day. They need you close.
+            Helina Baby was designed to make that closeness safer, more
+            comfortable and easier on your body, for every kind of day.
+        </p>
+
+        <a href="#waitlist" class="we-hear-you-button">
+            THE HELINA BABY STORY
+        </a>
+
+    </div>
+
+</section>
+
+<!-- SECTION 3: ONE CARRIER -->
+<section id="real-life" class="made-real-life">
+
+    <!-- LEFT: Figma text -->
+    <div class="real-life-content">
+
+        <h2 class="real-life-title">
+            One Carrier, Built for<br>
+            Day One to Day 1000
+        </h2>
+
+        <h3 class="real-life-orange-title">
+            Because your baby is expensive enough.
+        </h3>
+
+        <p class="real-life-intro">
+            The truth is your first carrier usually isn't your last.
+            Most carriers are built for one stage, which somehow means
+            buying another one six months later. And then another.
+        </p>
+
+        <h3 class="real-life-hear-title">
+            We Hear You.
+        </h3>
+
+        <p class="real-life-text">
+            Helina Baby skips that whole expensive, mind bending cycle.
+            It adjusts to fit your 8 pound newborn to a 40 pound toddler
+            and fits bodies of all shapes and sizes. So when it’s someone
+            else’s turn to carry, just pass the baby. No resizing.
+            No readjusting. No figuring out whose settings were whose.
+        </p>
+
+        <a href="#waitlist" class="real-life-button">
+            WHY HELINA?
+        </a>
+
+    </div>
+
+
+    <!-- RIGHT: scrapbook / changing photograph -->
+    <div class="real-life-visual">
+
+        <div class="real-life-collage">
+
+            <!-- Main scrapbook image -->
+            <img
+                src="{% static 'assets/images/mother on call with baby.png' %}"
+                alt="Mother carrying her baby"
+                class="real-life-scrapbook"
+            >
+
+            <!-- Second photograph that appears as cursor moves right -->
+            <div class="real-life-hover-photo">
+                <img
+                    src="{% static 'assets/images/mother-baby-box.png' %}"
+                    alt="Mother and baby"
+                >
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    
+
+    <!-- =====================================================
+     SECTION 4 — INFORMED BY SCIENCE
+===================================================== -->
+
+<section id="science" class="science-section">
+
+    <!-- Full kitchen background -->
+    <img
+        src="{% static 'assets/images/story-kitchen.png' %}"
+        alt=""
+        class="science-kitchen-bg"
+        aria-hidden="true"
+    >
+
+    <!-- Warm overlay -->
+    <div class="science-kitchen-overlay"></div>
+
+
+    <!-- =================================================
+         LEFT — PHOTO + FRAME + STICKERS
+    ================================================== -->
+
+    <div class="science-photo-area">
+
+        <div class="science-polaroid">
+
+            <!-- YOUR ORIGINAL WOMAN PHOTO -->
+            <img
+                src="{% static 'assets/images/story-mother-baby.jpg' %}"
+                alt="Mother carrying her baby"
+                class="science-woman-photo"
+            >
+
+        </div>
+
+
+        <!-- TOP LEFT STICKER -->
+        <img
+            src="{% static 'assets/graphics/sticker3.png' %}"
+            alt=""
+            class="science-sticker science-sticker-top"
+            aria-hidden="true"
+        >
+
+
+        <!-- BOTTOM RIGHT STICKER -->
+        <img
+            src="{% static 'assets/graphics/sticker6.png' %}"
+            alt=""
+            class="science-sticker science-sticker-bottom"
+            aria-hidden="true"
+        >
+
+    </div>
+
+
+    <!-- =================================================
+         RIGHT — CONTENT
+    ================================================== -->
+
+    <div class="science-content-area">
+
+        <div class="science-content">
+
+            <h2 class="science-title">
+                Informed by Science
+            </h2>
+
+            <h3 class="science-subtitle">
+                Designed to carry comfortably, for longer
+            </h3>
+
+            <p class="science-text">
+                Helina Baby is built around anatomy, biomechanics and physics.
+                Not because those words sound impressive, but because they matter
+                when you’re carrying a growing human.
+            </p>
+
+            <p class="science-text">
+                Every part of the carrier has a purpose. The Helina HUGFIT™ System
+                adjusts to your baby’s body to support them in the M position as
+                they grow. The X-shaped straps distribute your baby’s weight across
+                your body, not one spot. And we chose undyed organic cotton because
+                babies put everything in their mouths. Including their carrier.
+            </p>
+
+            <a
+                href="#waitlist"
+                class="science-button"
+            >
+                WHY HELINA?
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     COMMUNITY / TESTIMONIALS
+========================== -->
+<section
+    id="support"
+    class="relative overflow-hidden bg-[#CFBDAB] px-6 py-24 md:px-12 lg:px-20 lg:py-32"
+>
+
+    <!-- Decorative shapes -->
+    <div
+        class="absolute left-[3%] top-[28%]
+               h-5 w-5 rounded-full
+               bg-[#F85E29]"
+    ></div>
+
+    <div
+        class="absolute right-[5%] top-[35%]
+               h-7 w-7 rotate-12
+               bg-[#F85E29]"
+    ></div>
+
+    <div
+        class="absolute bottom-[18%] left-[10%]
+               h-6 w-6
+               rounded-full
+               bg-[#25A3A4]"
+    ></div>
+
+
+    <!-- Heading -->
+    <div class="relative z-10 mx-auto max-w-[700px] text-center">
+
+        <p
+            class="font-['Inter']
+                   text-[12px]
+                   font-semibold
+                   uppercase
+                   tracking-[0.28em]
+                   text-[#513A15]"
+        >
+            From our community
+        </p>
+
+        <h2
+            class="mt-4
+                   font-['Helina Baby']
+                   text-[56px]
+                   leading-none
+                   text-[#513A15]
+                   md:text-[68px]"
+        >
+            What would you say?
+        </h2>
+
+    </div>
+
+
+    <!-- Testimonial cards -->
+    <div
+        class="relative z-10 mx-auto mt-16
+               flex max-w-[1450px]
+               items-center justify-center
+               gap-8
+               md:gap-10
+               lg:gap-14"
+    >
+
+        <!-- Previous -->
+        <button
+            type="button"
+            aria-label="Previous testimonial"
+            class="hidden h-12 w-12 shrink-0
+                   items-center justify-center
+                   border border-[#513A15]
+                   text-2xl text-[#513A15]
+                   transition hover:bg-[#513A15]
+                   hover:text-[#FBF8EF]
+                   lg:flex"
+        >
+            ←
+        </button>
+
+
+        <!-- Card 1 -->
+        <article
+            class="relative w-[280px]
+                   rotate-[-3deg]
+                   bg-[#FBF8EF]
+                   px-6 pb-7 pt-5
+                   shadow-[7px_9px_0_rgba(81,58,21,0.12)]
+                   md:w-[310px]"
+        >
+
+            <div class="relative mb-5">
+
+                <img
+                    src="{% static 'assets/images/mother-shopping.png' %}"
+                    alt="Parent and child"
+                    class="h-[175px] w-full object-cover"
+                >
+
+                <span
+                    class="absolute -right-2 -top-3
+                           h-8 w-8 rotate-12
+                           bg-[#F85E29]"
+                ></span>
+
+            </div>
+
+            <p
+                class="font-['Helina Baby']
+                       text-[22px]
+                       leading-[1.15]
+                       text-[#513A15]"
+            >
+                Real life isn't perfect.
+                That's exactly why
+                support matters.
+            </p>
+
+            <p
+                class="mt-5
+                       font-['Inter']
+                       text-[11px]
+                       font-semibold
+                       uppercase
+                       tracking-[0.15em]
+                       text-[#B82D37]"
+            >
+                HeLina Baby community
+            </p>
+
+        </article>
+
+
+        <!-- Card 2 -->
+        <article
+            class="relative w-[300px]
+                   translate-y-[-12px]
+                   rotate-[1deg]
+                   bg-[#FBF8EF]
+                   px-6 pb-7 pt-5
+                   shadow-[7px_9px_0_rgba(81,58,21,0.12)]"
+        >
+
+            <div class="relative mb-5">
+
+                <img
+                    src="{% static 'assets/images/story-mother-baby.jpg' %}"
+                    alt="Mother and baby"
+                    class="h-[190px] w-full object-cover"
+                >
+
+                <span
+                    class="absolute -left-3 -top-3
+                           h-7 w-7 rounded-full
+                           bg-[#B82D37]"
+                ></span>
+
+            </div>
+
+            <p
+                class="font-['Helina Baby']
+                       text-[23px]
+                       leading-[1.15]
+                       text-[#513A15]"
+            >
+                I needed something
+                that felt supportive,
+                not complicated.
+            </p>
+
+            <p
+                class="mt-5
+                       font-['Inter']
+                       text-[11px]
+                       font-semibold
+                       uppercase
+                       tracking-[0.15em]
+                       text-[#25A3A4]"
+            >
+                HeLina Baby community
+            </p>
+
+        </article>
+
+
+        <!-- Card 3 -->
+        <article
+            class="relative w-[280px]
+                   rotate-[3deg]
+                   bg-[#FBF8EF]
+                   px-6 pb-7 pt-5
+                   shadow-[7px_9px_0_rgba(81,58,21,0.12)]
+                   md:w-[310px]"
+        >
+
+            <div class="relative mb-5">
+
+                <img
+                    src="{% static 'assets/images/mother-baby-carrier.png' %}"
+                    alt="Parent carrying baby"
+                    class="h-[175px] w-full object-cover"
+                >
+
+                <span
+                    class="absolute -right-2 -top-3
+                           h-7 w-7
+                           rotate-[-15deg]
+                           bg-[#2EE0E0]"
+                ></span>
+
+            </div>
+
+            <p
+                class="font-['Helina Baby']
+                       text-[22px]
+                       leading-[1.15]
+                       text-[#513A15]"
+            >
+                Every day looks
+                different. Having
+                support helps.
+            </p>
+
+            <p
+                class="mt-5
+                       font-['Inter']
+                       text-[11px]
+                       font-semibold
+                       uppercase
+                       tracking-[0.15em]
+                       text-[#B82D37]"
+            >
+                HeLina Baby community
+            </p>
+
+        </article>
+
+
+        <!-- Next -->
+        <button
+            type="button"
+            aria-label="Next testimonial"
+            class="hidden h-12 w-12 shrink-0
+                   items-center justify-center
+                   border border-[#513A15]
+                   text-2xl text-[#513A15]
+                   transition hover:bg-[#513A15]
+                   hover:text-[#FBF8EF]
+                   lg:flex"
+        >
+            →
+        </button>
+
+    </div>
+
+
+    <!-- CTA -->
+    <div class="relative z-10 mt-14 text-center">
+
+        <a
+            href="#waitlist"
+            class="inline-flex
+                   border border-[#513A15]
+                   bg-[#F85E29]
+                   px-9 py-4
+                   font-['Inter']
+                   text-[12px]
+                   font-semibold
+                   uppercase
+                   tracking-[0.16em]
+                   text-white
+                   transition
+                   hover:bg-[#B82D37]"
+        >
+            Join the Waitlist
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ICON / BRAND STRIP
+========================== -->
+<section
+    class="relative overflow-hidden border-t-2 border-[#FBF8EF] bg-[#25A3A4]"
+>
+    <div
+        class="mx-auto flex min-h-[190px] max-w-[1920px]
+               items-center justify-between
+               gap-8 px-8 py-12
+               md:px-16
+               lg:px-[8vw]"
+    >
+
+        <div class="flex flex-1 flex-col items-center gap-4 text-center">
+            <div
+                class="flex h-14 w-14 items-center justify-center
+                       rounded-full border-2 border-[#FBF8EF]
+                       text-2xl text-[#FBF8EF]"
+            >
+                ♡
+            </div>
+
+            <p
+                class="font-['Inter'] text-[10px]
+                       font-semibold uppercase
+                       tracking-[0.16em] text-[#FBF8EF]"
+            >
+                Thoughtfully designed
+            </p>
+        </div>
+
+
+        <div class="hidden h-16 w-px bg-[#FBF8EF]/60 md:block"></div>
+
+
+        <div class="flex flex-1 flex-col items-center gap-4 text-center">
+            <div
+                class="flex h-14 w-14 items-center justify-center
+                       rounded-full border-2 border-[#FBF8EF]
+                       text-xl text-[#FBF8EF]"
+            >
+                ✦
+            </div>
+
+            <p
+                class="font-['Inter'] text-[10px]
+                       font-semibold uppercase
+                       tracking-[0.16em] text-[#FBF8EF]"
+            >
+                Made for real life
+            </p>
+        </div>
+
+
+        <div class="hidden h-16 w-px bg-[#FBF8EF]/60 md:block"></div>
+
+
+        <div class="flex flex-1 flex-col items-center gap-4 text-center">
+            <div
+                class="flex h-14 w-14 items-center justify-center
+                       rounded-full border-2 border-[#FBF8EF]
+                       text-2xl text-[#FBF8EF]"
+            >
+                ∞
+            </div>
+
+            <p
+                class="font-['Inter'] text-[10px]
+                       font-semibold uppercase
+                       tracking-[0.16em] text-[#FBF8EF]"
+            >
+                Built to last
+            </p>
+        </div>
+
+
+        <div class="hidden h-16 w-px bg-[#FBF8EF]/60 md:block"></div>
+
+
+        <div class="flex flex-1 flex-col items-center gap-4 text-center">
+            <div
+                class="flex h-14 w-14 items-center justify-center
+                       rounded-full border-2 border-[#FBF8EF]
+                       text-xl text-[#FBF8EF]"
+            >
+                ↗
+            </div>
+
+            <p
+                class="font-['Inter'] text-[10px]
+                       font-semibold uppercase
+                       tracking-[0.16em] text-[#FBF8EF]"
+            >
+                We hear you
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================
+     FOOTER
+========================== -->
+<footer
+    id="contact"
+    class="border-t-2 border-[#25A3A4] bg-[#FBF8EF]"
+>
+
+    <div
+        class="mx-auto max-w-[1920px]
+               px-8 py-16
+               md:px-16
+               lg:px-[8vw] lg:py-20"
+    >
+
+        <div
+            class="grid gap-12
+                   md:grid-cols-2
+                   lg:grid-cols-4"
+        >
+
+            <!-- Brand -->
+            <div>
+
+                <img
+                    src="{% static 'assets/logo/helina-primary-logo.svg' %}"
+                    alt="HeLina Baby"
+                    class="w-[150px]"
+                >
+
+                <p
+                    class="mt-6 max-w-[270px]
+                           font-['Inter']
+                           text-sm leading-6
+                           text-[#513A15]"
+                >
+                    Made for every kind of day.
+                </p>
+
+                <p
+                    class="mt-3
+                           font-['Inter']
+                           text-xs leading-5
+                           text-[#513A15]/70"
+                >
+                    We hear you.
+                </p>
+
+            </div>
+
+
+            <!-- Explore -->
+            <div>
+
+                <h3
+                    class="font-['Inter']
+                           text-xs font-bold
+                           uppercase tracking-[0.18em]
+                           text-[#B82D37]"
+                >
+                    Explore
+                </h3>
+
+                <div class="mt-6 space-y-3">
+
+                    <a
+                        href="#about"
+                        class="block font-['Inter']
+                               text-sm text-[#513A15]
+                               hover:text-[#B82D37]"
+                    >
+                        About
+                    </a>
+
+                    <a
+                        href="#story"
+                        class="block font-['Inter']
+                               text-sm text-[#513A15]
+                               hover:text-[#B82D37]"
+                    >
+                        Our Story
+                    </a>
+
+                    <a
+                        href="#support"
+                        class="block font-['Inter']
+                               text-sm text-[#513A15]
+                               hover:text-[#B82D37]"
+                    >
+                        Support
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Contact -->
+            <div>
+
+                <h3
+                    class="font-['Inter']
+                           text-xs font-bold
+                           uppercase tracking-[0.18em]
+                           text-[#B82D37]"
+                >
+                    Contact
+                </h3>
+
+                <div class="mt-6 space-y-3">
+
+                    <a
+                        href="mailto:hello@helinababy.com"
+                        class="block font-['Inter']
+                               text-sm text-[#513A15]
+                               hover:text-[#B82D37]"
+                    >
+                        hello@helinababy.com
+                    </a>
+
+                    <p
+                        class="font-['Inter']
+                               text-sm text-[#513A15]"
+                    >
+                        Follow along as we get ready.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Waitlist -->
+            <div id="waitlist">
+
+                <h3
+                    class="font-['Inter']
+                           text-xs font-bold
+                           uppercase tracking-[0.18em]
+                           text-[#B82D37]"
+                >
+                    Stay in the loop
+                </h3>
+
+                <p
+                    class="mt-5
+                           font-['Inter']
+                           text-sm leading-6
+                           text-[#513A15]"
+                >
+                    We're getting things ready.
+                    Leave your email and we'll let you
+                    know when we're live.
+                </p>
+
+                <form
+                    class="mt-6 flex
+                           border border-[#513A15]"
+                >
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Your email"
+                        required
+                        class="min-w-0 flex-1
+                               bg-transparent
+                               px-4 py-3
+                               font-['Inter']
+                               text-sm
+                               text-[#513A15]
+                               outline-none
+                               placeholder:text-[#513A15]/50"
+                    >
+
+                    <button
+                        type="submit"
+                        class="shrink-0
+                               bg-[#F85E29]
+                               px-5
+                               font-['Inter']
+                               text-[11px]
+                               font-bold
+                               uppercase
+                               tracking-[0.12em]
+                               text-white
+                               transition
+                               hover:bg-[#B82D37]"
+                    >
+                        Join
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bottom line -->
+        <div
+            class="mt-16
+                   border-t border-[#513A15]/25
+                   pt-6"
+        >
+
+            <div
+                class="flex flex-col
+                       gap-3
+                       text-xs text-[#513A15]/70
+                       md:flex-row
+                       md:items-center
+                       md:justify-between"
+            >
+
+                <p>
+                    © 2026 HeLina Baby. All rights reserved.
+                </p>
+
+                <p>
+                    Made for every kind of day.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+    </main>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const collage = document.querySelector(".real-life-collage");
+    const hoverPhoto = document.querySelector(".real-life-hover-photo");
+
+    if (!collage || !hoverPhoto) {
+        console.error("Made for Real Life hover elements were not found.");
+        return;
+    }
+
+    collage.addEventListener("mousemove", function (event) {
+
+        const rect = collage.getBoundingClientRect();
+
+        const mouseX = event.clientX - rect.left;
+
+        const percentage = mouseX / rect.width;
+
+        /*
+         * Left side = first image
+         * Right side = second image
+         */
+        const opacity = Math.max(
+            0,
+            Math.min(
+                1,
+                (percentage - 0.15) / 0.7
+            )
+        );
+
+        hoverPhoto.style.opacity = opacity;
+    });
+
+
+    collage.addEventListener("mouseleave", function () {
+        hoverPhoto.style.opacity = "0";
+    });
+
+});
+</script>
+
+</body>
+</html>
