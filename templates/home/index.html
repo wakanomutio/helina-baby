@@ -13,190 +13,57 @@
 
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
-    <!-- =========================
-     FIGMA NAVIGATION
-========================== -->
-<header
+    <header class="site-header relative z-50 h-[115px] w-full overflow-visible">
 
-    class="relative z-50 border-b-[2px] border-[#25A3A4]"
-    style="background-image: url('{% static 'assets/images/Fabric_piece4.png' %}');
-           background-size: 100% 100%;
-           background-position: center;
-           background-repeat: no-repeat;"
->
-
-    <div
-        class="relative mx-auto
-               flex h-[94px]
-               max-w-[1920px]
-               items-center
-               px-8
-               md:px-12
-               lg:px-[4.5vw]"
+    <!-- NAVBAR FABRIC -->
+    <img
+        src="{% static 'assets/images/Vector.png' %}"
+        alt=""
+        class="navbar-fabric absolute inset-0 h-full w-full"
+        aria-hidden="true"
     >
 
-        <!-- =====================
-             LEFT NAVIGATION
-        ====================== -->
-        <nav
-            class="flex items-center
-                   gap-8
-                   md:gap-10
-                   lg:gap-12"
-        >
+    <!-- NAV CONTENT -->
+    <div class="relative z-10 mx-auto flex h-full w-full items-center px-8 md:px-12 lg:px-[4.5vw]">
 
-            <a
-                href="#about"
-                class="group relative
-                       font-['Inter']
-                       text-[13px]
-                       font-medium
-                       uppercase
-                       tracking-[0.20em]
-                       text-[#513A15]"
-            >
+        <!-- LEFT NAV -->
+        <div class="flex items-center gap-8">
+            <a href="#about" class="navbar-link">
                 About
-
-                <span
-                    class="absolute -bottom-2 left-0
-                           h-[1px] w-0
-                           bg-[#B82D37]
-                           transition-all duration-300
-                           group-hover:w-full"
-                ></span>
             </a>
 
-
-            <a
-                href="#story"
-                class="group relative
-                       font-['Inter']
-                       text-[13px]
-                       font-medium
-                       uppercase
-                       tracking-[0.20em]
-                       text-[#513A15]"
-            >
+            <a href="#story" class="navbar-link">
                 Our Story
-
-                <span
-                    class="absolute -bottom-2 left-0
-                           h-[1px] w-0
-                           bg-[#B82D37]
-                           transition-all duration-300
-                           group-hover:w-full"
-                ></span>
             </a>
+        </div>
 
-        </nav>
 
-
-        <!-- =====================
-             CENTRED LOGO
-        ====================== -->
+        <!-- CENTER LOGO -->
         <a
-            href="/"
-            aria-label="HeLina Baby home"
-            class="absolute left-1/2
-                   top-1/2
-                   -translate-x-1/2
-                   -translate-y-1/2"
+            href="#"
+            class="navbar-logo absolute left-1/2 top-[58%] -translate-x-1/2 -translate-y-1/2"
         >
-
             <img
                 src="{% static 'assets/logo/helina-primary-logo.svg' %}"
                 alt="HeLina Baby"
-                class="block
-                       w-[145px]
-                       md:w-[165px]
-                       lg:w-[180px]"
             >
-
         </a>
 
 
-        <!-- =====================
-             RIGHT NAVIGATION
-        ====================== -->
-        <nav
-            class="ml-auto
-                   flex items-center
-                   gap-8
-                   md:gap-10
-                   lg:gap-12"
-        >
-
-            <a
-                href="#support"
-                class="group relative
-                       font-['Inter']
-                       text-[13px]
-                       font-medium
-                       uppercase
-                       tracking-[0.20em]
-                       text-[#513A15]"
-            >
+        <!-- RIGHT NAV -->
+        <div class="ml-auto flex items-center gap-8">
+            <a href="#support" class="navbar-link">
                 Support
-
-                <span
-                    class="absolute -bottom-2 left-0
-                           h-[1px] w-0
-                           bg-[#B82D37]
-                           transition-all duration-300
-                           group-hover:w-full"
-                ></span>
             </a>
 
-
-            <a
-                href="#contact"
-                class="group relative
-                       font-['Inter']
-                       text-[13px]
-                       font-medium
-                       uppercase
-                       tracking-[0.20em]
-                       text-[#513A15]"
-            >
+            <a href="#contact" class="navbar-link">
                 Contact
-
-                <span
-                    class="absolute -bottom-2 left-0
-                           h-[1px] w-0
-                           bg-[#B82D37]
-                           transition-all duration-300
-                           group-hover:w-full"
-                ></span>
             </a>
-
-        </nav>
-
-
-        <!-- =====================
-             MOBILE MENU BUTTON
-        ====================== -->
-        <button
-            type="button"
-            aria-label="Open navigation menu"
-            class="ml-auto
-                   hidden
-                   h-10 w-10
-                   items-center
-                   justify-center
-                   border border-[#513A15]
-                   text-[#513A15]
-                   md:hidden"
-        >
-            <span class="text-lg">☰</span>
-        </button>
+        </div>
 
     </div>
 
 </header>
-
 
     <!-- =========================
          HERO
@@ -439,43 +306,16 @@
     <div class="science-kitchen-overlay"></div>
 
 
-    <!-- =================================================
-         LEFT — PHOTO + FRAME + STICKERS
-    ================================================== -->
+    <!-- LEFT IMAGE — GROUPED FIGMA ARTWORK -->
+<div class="science-visual">
 
-    <div class="science-photo-area">
+    <img
+        src="{% static 'assets/images/group-196.png' %}"
+        alt="Mother carrying her baby in a Helina Baby carrier"
+        class="science-grouped-image"
+    >
 
-        <div class="science-polaroid">
-
-            <!-- YOUR ORIGINAL WOMAN PHOTO -->
-            <img
-                src="{% static 'assets/images/story-mother-baby.jpg' %}"
-                alt="Mother carrying her baby"
-                class="science-woman-photo"
-            >
-
-        </div>
-
-
-        <!-- TOP LEFT STICKER -->
-        <img
-            src="{% static 'assets/graphics/sticker3.png' %}"
-            alt=""
-            class="science-sticker science-sticker-top"
-            aria-hidden="true"
-        >
-
-
-        <!-- BOTTOM RIGHT STICKER -->
-        <img
-            src="{% static 'assets/graphics/sticker6.png' %}"
-            alt=""
-            class="science-sticker science-sticker-bottom"
-            aria-hidden="true"
-        >
-
-    </div>
-
+</div>
 
     <!-- =================================================
          RIGHT — CONTENT
@@ -520,289 +360,152 @@
 
 </section>
 
-<!-- =========================
-     COMMUNITY / TESTIMONIALS
-========================== -->
-<section
-    id="support"
-    class="relative overflow-hidden bg-[#CFBDAB] px-6 py-24 md:px-12 lg:px-20 lg:py-32"
->
+<!-- =========================================================
+     SECTION 5 — WORN AND REVIEWED
+========================================================= -->
 
-    <!-- Decorative shapes -->
-    <div
-        class="absolute left-[3%] top-[28%]
-               h-5 w-5 rounded-full
-               bg-[#F85E29]"
-    ></div>
+<section id="reviews" class="reviews-section">
 
-    <div
-        class="absolute right-[5%] top-[35%]
-               h-7 w-7 rotate-12
-               bg-[#F85E29]"
-    ></div>
+    <div class="reviews-inner">
 
-    <div
-        class="absolute bottom-[18%] left-[10%]
-               h-6 w-6
-               rounded-full
-               bg-[#25A3A4]"
-    ></div>
-
-
-    <!-- Heading -->
-    <div class="relative z-10 mx-auto max-w-[700px] text-center">
-
-        <p
-            class="font-['Inter']
-                   text-[12px]
-                   font-semibold
-                   uppercase
-                   tracking-[0.28em]
-                   text-[#513A15]"
-        >
-            From our community
-        </p>
-
-        <h2
-            class="mt-4
-                   font-['Helina Baby']
-                   text-[56px]
-                   leading-none
-                   text-[#513A15]
-                   md:text-[68px]"
-        >
-            What would you say?
+        <!-- TITLE -->
+        <h2 class="reviews-title">
+            Worn and Reviewed!
         </h2>
 
-    </div>
+
+        <!-- TESTIMONIAL AREA -->
+        <div class="reviews-slider">
+
+            <!-- LEFT ARROW -->
+            <button
+                type="button"
+                class="reviews-arrow reviews-arrow-left"
+                aria-label="Previous review">
+                ‹
+            </button>
 
 
-    <!-- Testimonial cards -->
-    <div
-        class="relative z-10 mx-auto mt-16
-               flex max-w-[1450px]
-               items-center justify-center
-               gap-8
-               md:gap-10
-               lg:gap-14"
-    >
+            <!-- REVIEW 1 -->
+            <article class="review-card review-card-one">
 
-        <!-- Previous -->
-        <button
-            type="button"
-            aria-label="Previous testimonial"
-            class="hidden h-12 w-12 shrink-0
-                   items-center justify-center
-                   border border-[#513A15]
-                   text-2xl text-[#513A15]
-                   transition hover:bg-[#513A15]
-                   hover:text-[#FBF8EF]
-                   lg:flex"
-        >
-            ←
-        </button>
+                <div class="review-pin"></div>
 
+                <div class="review-photo review-photo-one">
+                    <img
+                        src="{% static 'assets/images/mother-baby-box.png' %}"
+                        alt="Helina Baby review"
+                    >
+                </div>
 
-        <!-- Card 1 -->
-        <article
-            class="relative w-[280px]
-                   rotate-[-3deg]
-                   bg-[#FBF8EF]
-                   px-6 pb-7 pt-5
-                   shadow-[7px_9px_0_rgba(81,58,21,0.12)]
-                   md:w-[310px]"
-        >
+                <div class="review-paper">
 
-            <div class="relative mb-5">
+                    <div class="review-stars">
+                        ★ ★ ★ ★ ★
+                    </div>
 
-                <img
-                    src="{% static 'assets/images/mother-shopping.png' %}"
-                    alt="Parent and child"
-                    class="h-[175px] w-full object-cover"
-                >
+                    <p class="review-quote">
+                        I can’t stop talking about how much I
+                        love my carrier. It’s been a real part
+                        of our everyday life.
+                    </p>
 
-                <span
-                    class="absolute -right-2 -top-3
-                           h-8 w-8 rotate-12
-                           bg-[#F85E29]"
-                ></span>
+                    <p class="review-name">
+                        Emma B.
+                    </p>
 
-            </div>
+                </div>
 
-            <p
-                class="font-['Helina Baby']
-                       text-[22px]
-                       leading-[1.15]
-                       text-[#513A15]"
-            >
-                Real life isn't perfect.
-                That's exactly why
-                support matters.
-            </p>
-
-            <p
-                class="mt-5
-                       font-['Inter']
-                       text-[11px]
-                       font-semibold
-                       uppercase
-                       tracking-[0.15em]
-                       text-[#B82D37]"
-            >
-                HeLina Baby community
-            </p>
-
-        </article>
+            </article>
 
 
-        <!-- Card 2 -->
-        <article
-            class="relative w-[300px]
-                   translate-y-[-12px]
-                   rotate-[1deg]
-                   bg-[#FBF8EF]
-                   px-6 pb-7 pt-5
-                   shadow-[7px_9px_0_rgba(81,58,21,0.12)]"
-        >
+            <!-- REVIEW 2 -->
+            <article class="review-card review-card-two">
 
-            <div class="relative mb-5">
+                <div class="review-pin"></div>
 
-                <img
-                    src="{% static 'assets/images/story-mother-baby.jpg' %}"
-                    alt="Mother and baby"
-                    class="h-[190px] w-full object-cover"
-                >
+                <div class="review-video">
 
-                <span
-                    class="absolute -left-3 -top-3
-                           h-7 w-7 rounded-full
-                           bg-[#B82D37]"
-                ></span>
+                    <img
+                        src="{% static 'assets/images/story-mother-baby.jpg' %}"
+                        alt="Helina Baby review"
+                    >
 
-            </div>
+                    <span class="review-play">
+                        ▶
+                    </span>
 
-            <p
-                class="font-['Helina Baby']
-                       text-[23px]
-                       leading-[1.15]
-                       text-[#513A15]"
-            >
-                I needed something
-                that felt supportive,
-                not complicated.
-            </p>
+                </div>
 
-            <p
-                class="mt-5
-                       font-['Inter']
-                       text-[11px]
-                       font-semibold
-                       uppercase
-                       tracking-[0.15em]
-                       text-[#25A3A4]"
-            >
-                HeLina Baby community
-            </p>
+                <div class="review-paper review-video-paper">
 
-        </article>
+                    <div class="review-stars">
+                        ★ ★ ★ ★ ★
+                    </div>
+
+                    <p class="review-name">
+                        Dr. Amanda Radway
+                    </p>
+
+                </div>
+
+            </article>
 
 
-        <!-- Card 3 -->
-        <article
-            class="relative w-[280px]
-                   rotate-[3deg]
-                   bg-[#FBF8EF]
-                   px-6 pb-7 pt-5
-                   shadow-[7px_9px_0_rgba(81,58,21,0.12)]
-                   md:w-[310px]"
-        >
+            <!-- REVIEW 3 -->
+            <article class="review-card review-card-three">
 
-            <div class="relative mb-5">
+                <div class="review-pin"></div>
 
-                <img
-                    src="{% static 'assets/images/mother-baby-carrier.png' %}"
-                    alt="Parent carrying baby"
-                    class="h-[175px] w-full object-cover"
-                >
+                <div class="review-photo review-photo-three">
 
-                <span
-                    class="absolute -right-2 -top-3
-                           h-7 w-7
-                           rotate-[-15deg]
-                           bg-[#2EE0E0]"
-                ></span>
+                    <img
+                        src="{% static 'assets/images/story-mother-baby.jpg' %}"
+                        alt="Helina Baby review"
+                    >
 
-            </div>
+                </div>
 
-            <p
-                class="font-['Helina Baby']
-                       text-[22px]
-                       leading-[1.15]
-                       text-[#513A15]"
-            >
-                Every day looks
-                different. Having
-                support helps.
-            </p>
+                <div class="review-paper">
 
-            <p
-                class="mt-5
-                       font-['Inter']
-                       text-[11px]
-                       font-semibold
-                       uppercase
-                       tracking-[0.15em]
-                       text-[#B82D37]"
-            >
-                HeLina Baby community
-            </p>
+                    <div class="review-stars">
+                        ★ ★ ★ ★ ★
+                    </div>
 
-        </article>
+                    <p class="review-quote">
+                        Compared to bulky carriers,
+                        Helina Baby makes everyday
+                        carrying feel much easier.
+                    </p>
+
+                    <p class="review-name">
+                        Jeanette T.
+                    </p>
+
+                </div>
+
+            </article>
 
 
-        <!-- Next -->
-        <button
-            type="button"
-            aria-label="Next testimonial"
-            class="hidden h-12 w-12 shrink-0
-                   items-center justify-center
-                   border border-[#513A15]
-                   text-2xl text-[#513A15]
-                   transition hover:bg-[#513A15]
-                   hover:text-[#FBF8EF]
-                   lg:flex"
-        >
-            →
-        </button>
+            <!-- RIGHT ARROW -->
+            <button
+                type="button"
+                class="reviews-arrow reviews-arrow-right"
+                aria-label="Next review">
+                ›
+            </button>
 
-    </div>
+        </div>
 
 
-    <!-- CTA -->
-    <div class="relative z-10 mt-14 text-center">
-
-        <a
-            href="#waitlist"
-            class="inline-flex
-                   border border-[#513A15]
-                   bg-[#F85E29]
-                   px-9 py-4
-                   font-['Inter']
-                   text-[12px]
-                   font-semibold
-                   uppercase
-                   tracking-[0.16em]
-                   text-white
-                   transition
-                   hover:bg-[#B82D37]"
-        >
-            Join the Waitlist
+        <!-- CTA -->
+        <a href="#waitlist" class="reviews-button">
+            SHOP HELINA
         </a>
 
     </div>
 
 </section>
-
 
 <!-- =========================
      ICON / BRAND STRIP

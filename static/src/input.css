@@ -20,6 +20,113 @@
     font-display: swap;
 }
 
+:root {
+    --helina-chocolate: #513A15;
+    --helina-light-brown: #CFBDAB;
+    --helina-beige: #F6F1E4;
+    --helina-cream: #FBF8EF;
+    --helina-burgundy: #B82D37;
+    --helina-teal: #25A3A4;
+    --helina-orange: #F85E29;
+    --helina-turquoise: #2EE0E0;
+}
+
+/* =========================================================
+   NAVBAR — FABRIC
+========================================================= */
+
+.site-header {
+    position: relative;
+    height: 115px;
+    width: 100%;
+    overflow: visible;
+
+    /*
+       Keep the thin Helina turquoise divider.
+    */
+    border-bottom: 2px solid var(--helina-teal);
+
+    /*
+       Makes sure navbar stays above the hero.
+    */
+    z-index: 100;
+}
+
+
+/* ---------------------------------------------------------
+   FABRIC IMAGE
+--------------------------------------------------------- */
+
+.navbar-fabric {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+
+    z-index: 0;
+    pointer-events: none;
+}
+
+
+/* ---------------------------------------------------------
+   NAV LINKS
+--------------------------------------------------------- */
+
+.navbar-link {
+    position: relative;
+
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    color: var(--helina-chocolate);
+
+    text-decoration: none;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.navbar-link:hover {
+    color: var(--helina-burgundy);
+    transform: translateY(-1px);
+}
+
+
+/* ---------------------------------------------------------
+   CENTER LOGO
+--------------------------------------------------------- */
+
+.navbar-logo {
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 150px;
+
+    /*
+       Lets the logo sit slightly below
+       the center of the fabric.
+    */
+}
+
+.navbar-logo img {
+    display: block;
+
+    width: 150px;
+    height: auto;
+}
+
 /* =========================================================
    BRAND COLOURS
 ========================================================= */
@@ -115,11 +222,7 @@ h3 {
 
 /* =========================================================
    SECTION 2 — WE HEAR YOU
-   Artwork: 2mart.png
-========================================================= */
-
-/* =========================================================
-   SECTION 2 — WE HEAR YOU
+   Fabric overlaps hero and remains visible on all edges
 ========================================================= */
 
 .we-hear-you {
@@ -131,34 +234,105 @@ h3 {
     display: grid;
     grid-template-columns: 48% 52%;
 
+    /*
+       IMPORTANT:
+       Allow the fabric to extend outside this section.
+    */
     overflow: visible;
 
-    /* Cream is only behind the fabric edges */
-    background-color: #FBF8EF;
-
-    background-image: url("/static/assets/images/we-hear-you-fabric.png");
-    background-repeat: no-repeat;
-
     /*
-       NO vertical inset.
-       The fabric reaches the very top and bottom.
+       Remove the fabric background from the section itself.
     */
-    background-position: center top;
-    background-size: calc(100% - 24px) 100%;
+    background: #25A3A4;
 
     /*
-       Pull the section upward so the top fabric edge
-       overlaps the bottom of the hero.
+       Pull the entire section slightly over the hero.
     */
     margin-top: -20px;
 
     /*
-       Keeps the artwork/text from moving upward
-       with the overlap.
+       Keeps the artwork/text in their correct position.
     */
     padding-top: 20px;
 
-    z-index: 20;
+    z-index: 50;
+}
+
+
+/* =========================================================
+   FABRIC BORDER / BACKGROUND
+========================================================= */
+
+.we-hear-you::before {
+    content: "";
+
+    position: absolute;
+
+    /*
+       Extend above the section so the fabric
+       sits ON TOP of the hero.
+    */
+    top: -28px;
+
+    /*
+       Extend below the section so the
+       bottom torn edge remains visible.
+    */
+    bottom: -20px;
+
+    left: 0;
+    right: 0;
+
+    background-image: url("/static/assets/images/we-hear-you-fabric.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    /*
+       Full width and full height.
+       This makes the fabric align with the hero.
+    */
+    background-size: 100% 100%;
+
+    /*
+       Fabric is behind the artwork and text,
+       but above the hero.
+    */
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTENT ABOVE FABRIC
+========================================================= */
+
+.we-hear-you-artwork {
+    position: absolute;
+
+    top: 4%;
+    left: 4%;
+
+    z-index: 5;
+
+    width: 39%;
+    height: 92%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.we-hear-you-copy {
+    position: absolute;
+
+    top: 21%;
+    left: 46.5%;
+
+    z-index: 10;
+
+    width: 47%;
 }
 
 /* ---------------------------------------------------------
@@ -608,20 +782,21 @@ h3 {
 
 /* =========================================================
    SECTION 4 — INFORMED BY SCIENCE
-   FIGMA POSITIONING
+   GROUPED FIGMA ARTWORK
 ========================================================= */
 
 .science-section {
     position: relative;
-    display: grid;
-    grid-template-columns: 43% 57%;
 
     width: 100%;
-    min-height: 560px;
+    min-height: 620px;
+
+    display: grid;
+    grid-template-columns: 45% 55%;
 
     overflow: hidden;
 
-    background: #513A15;
+    background: #2b1b12;
 }
 
 
@@ -642,7 +817,6 @@ h3 {
     z-index: 0;
 }
 
-
 .science-kitchen-overlay {
     position: absolute;
     inset: 0;
@@ -654,7 +828,7 @@ h3 {
 
 
 /* =========================================================
-   LEFT SIDE
+   LEFT PHOTO AREA
 ========================================================= */
 
 .science-photo-area {
@@ -662,125 +836,55 @@ h3 {
 
     z-index: 5;
 
-    min-height: 560px;
+    min-height: 620px;
 
     display: flex;
+    align-items: center;
+    justify-content: center;
 
+    padding: 40px 30px 40px 45px;
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   GROUPED FIGMA IMAGE
+========================================================= */
+
+.science-grouped-image {
+    display: block;
+
+    width: 400px;
+    max-width: 75%;
+
+    height: auto;
+    object-fit: contain;
+
+    position: relative;
+    z-index: 5;
+
+    transform: translateX(65px) rotate(0deg);
+}
+
+
+/* =========================================================
+   OPTIONAL VISUAL WRAPPER
+========================================================= */
+
+.science-visual {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
     align-items: center;
     justify-content: center;
 
     overflow: visible;
 
-    /*
-       IMPORTANT:
-       Keep the artwork toward the left,
-       just like the Figma.
-    */
-
-    padding:
-        25px
-        35px
-        25px
-        25px;
-}
-
-
-/* =========================================================
-   POLAROID FRAME
-========================================================= */
-
-.science-polaroid {
-    position: relative;
-
-    width: 325px;
-    height: 415px;
-
-    padding: 9px 9px 24px;
-
-    background: #FBF8EF;
-
-    box-shadow:
-        4px 7px 12px rgba(0, 0, 0, 0.25);
-
-    transform: translateX(65px) rotate(-5deg);
-
-    z-index: 8;
-}
-
-
-/* =========================================================
-   WOMAN PHOTO
-========================================================= */
-
-.science-woman-photo {
-    position: relative;
-
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    /*
-       This keeps the complete woman visible
-       rather than zooming aggressively.
-    */
-    object-position: center center;
-
-    z-index: 2;
-}
-
-
-/* =========================================================
-   STICKERS
-========================================================= */
-
-.science-sticker {
-    position: absolute;
-
-    display: block;
-
-    height: auto;
-
-    z-index: 20;
-
-    pointer-events: none;
-
-    filter:
-        drop-shadow(
-            3px 4px 3px rgba(0, 0, 0, 0.20)
-        );
-}
-
-
-/* =========================================================
-   TOP-LEFT STICKER
-========================================================= */
-
-.science-sticker-top {
-    width: 68px;
-
-    left: 13%;
-
-    top: 17%;
-
-    transform: rotate(-5deg);
-}
-
-
-/* =========================================================
-   BOTTOM STICKER
-========================================================= */
-
-.science-sticker-bottom {
-    width: 72px;
-
-    left: 50%;
-
-    bottom: 12%;
-
-    transform: rotate(-4deg);
+    z-index: 5;
 }
 
 
@@ -790,20 +894,17 @@ h3 {
 
 .science-content-area {
     position: relative;
-
-    z-index: 5;
-
-    min-height: 560px;
+    z-index: 10;
+    min-height: 620px;
 
     display: flex;
-
-    align-items: center;
-
+    align-items: flex-start;
     justify-content: flex-start;
 
-    padding-top: 105px;
+    padding-top: 125px;
 
-    overflow: hidden;
+    padding-left: 70px;
+    padding-right: 70px;
 }
 
 
@@ -813,14 +914,9 @@ h3 {
 
 .science-content {
     width: 100%;
+    max-width: 760px;
 
-    max-width: 700px;
-
-    padding:
-        20px
-        5vw
-        20px
-        85px;
+    padding: 0;
 }
 
 
@@ -834,15 +930,11 @@ h3 {
     color: #FBF8EF;
 
     font-family: "Inter", sans-serif !important;
-    
-    text-shadow:
-        2px 2px 4px rgba(0, 0, 0, 0.35);
-
 
     font-size: clamp(
-        2.2rem,
-        3vw,
-        3rem
+        2.3rem,
+        3.1vw,
+        3.3rem
     );
 
     font-weight: 800;
@@ -857,30 +949,30 @@ h3 {
 
 
 /* =========================================================
-   TURQUOISE HEADING
+   TURQUOISE SUBTITLE
 ========================================================= */
 
 .science-subtitle {
-    margin-top: 7px;
+    margin: 10px 0 0;
 
     color: #2EE0E0;
 
     font-family: "Inter", sans-serif !important;
 
     font-size: clamp(
-        1.05rem,
-        1.4vw,
-        1.4rem
+        1.15rem,
+        1.5vw,
+        1.5rem
     );
-
-    text-shadow:
-        1px 2px 3px rgba(0, 0, 0, 0.35);
 
     font-weight: 800;
 
     line-height: 1.05;
 
     letter-spacing: -0.02em;
+
+    text-shadow:
+        1px 2px 3px rgba(0, 0, 0, 0.35);
 }
 
 
@@ -889,29 +981,29 @@ h3 {
 ========================================================= */
 
 .science-text {
-    max-width: 620px;
+    max-width: 700px;
 
-    margin-top: 18px;
+    margin: 22px 0 0;
 
     color: #FBF8EF;
 
     font-family: "Inter", sans-serif;
 
-    text-shadow:
-        1px 1px 3px rgba(0, 0, 0, 0.45);
-
-    font-size: 13px;
+    font-size: 15px;
 
     font-weight: 400;
 
     line-height: 1.35;
+
+    text-shadow:
+        1px 1px 3px rgba(0, 0, 0, 0.45);
 }
 
 
-/* Second paragraph closer to first */
+/* Second paragraph */
 
 .science-text + .science-text {
-    margin-top: 14px;
+    margin-top: 18px;
 }
 
 
@@ -925,22 +1017,20 @@ h3 {
     align-items: center;
     justify-content: center;
 
-    margin-top: 16px;
+    margin-top: 22px;
 
-    padding:
-        9px 18px;
+    padding: 13px 28px;
 
     background: #F85E29;
 
     border: 1px solid #F85E29;
-
     border-radius: 4px;
 
     color: #FFFFFF;
 
     font-family: "Inter", sans-serif;
 
-    font-size: 10px;
+    font-size: 12px;
 
     font-weight: 800;
 
@@ -952,7 +1042,7 @@ h3 {
 
     transition:
         transform 0.2s ease,
-        background 0.2s ease;
+        background-color 0.2s ease;
 }
 
 
@@ -978,7 +1068,7 @@ h3 {
     left: 0;
 
     width: 100%;
-    height: 9px;
+    height: 12px;
 
     background: #FBF8EF;
 
@@ -987,40 +1077,40 @@ h3 {
     clip-path: polygon(
         0 0,
         100% 0,
-        100% 55%,
-        97% 40%,
-        94% 65%,
-        91% 35%,
-        88% 60%,
-        85% 40%,
-        82% 68%,
-        79% 35%,
-        76% 62%,
-        73% 40%,
-        70% 65%,
-        67% 38%,
-        64% 60%,
-        61% 35%,
-        58% 65%,
-        55% 40%,
-        52% 60%,
-        49% 35%,
-        46% 65%,
-        43% 38%,
-        40% 62%,
-        37% 35%,
-        34% 65%,
-        31% 40%,
-        28% 60%,
-        25% 35%,
-        22% 65%,
-        19% 40%,
-        16% 60%,
-        13% 35%,
-        10% 65%,
-        7% 40%,
-        4% 60%,
-        0 38%
+        100% 45%,
+        97% 70%,
+        94% 35%,
+        91% 65%,
+        88% 30%,
+        85% 70%,
+        82% 35%,
+        79% 65%,
+        76% 30%,
+        73% 70%,
+        70% 35%,
+        67% 65%,
+        64% 30%,
+        61% 70%,
+        58% 35%,
+        55% 65%,
+        52% 30%,
+        49% 70%,
+        46% 35%,
+        43% 65%,
+        40% 30%,
+        37% 70%,
+        34% 35%,
+        31% 65%,
+        28% 30%,
+        25% 70%,
+        22% 35%,
+        19% 65%,
+        16% 30%,
+        13% 70%,
+        10% 35%,
+        7% 65%,
+        4% 30%,
+        0 60%
     );
 }
 
@@ -1038,45 +1128,45 @@ h3 {
     left: 0;
 
     width: 100%;
-    height: 9px;
+    height: 12px;
 
     background: #FBF8EF;
 
     z-index: 50;
 
     clip-path: polygon(
-        0 38%,
+        0 40%,
         4% 65%,
-        7% 40%,
-        10% 68%,
+        7% 30%,
+        10% 70%,
         13% 35%,
-        16% 62%,
-        19% 40%,
-        22% 65%,
+        16% 65%,
+        19% 30%,
+        22% 70%,
         25% 35%,
-        28% 62%,
-        31% 40%,
-        34% 68%,
+        28% 65%,
+        31% 30%,
+        34% 70%,
         37% 35%,
-        40% 62%,
-        43% 40%,
-        46% 65%,
+        40% 65%,
+        43% 30%,
+        46% 70%,
         49% 35%,
-        52% 62%,
-        55% 40%,
-        58% 68%,
+        52% 65%,
+        55% 30%,
+        58% 70%,
         61% 35%,
-        64% 62%,
-        67% 40%,
-        70% 65%,
+        64% 65%,
+        67% 30%,
+        70% 70%,
         73% 35%,
-        76% 62%,
-        79% 40%,
-        82% 65%,
+        76% 65%,
+        79% 30%,
+        82% 70%,
         85% 35%,
-        88% 62%,
-        91% 40%,
-        94% 65%,
+        88% 65%,
+        91% 30%,
+        94% 70%,
         97% 35%,
         100% 60%,
         100% 100%,
@@ -1092,85 +1182,729 @@ h3 {
 @media (min-width: 1400px) {
 
     .science-section {
-        min-height: 620px;
+        min-height: 650px;
     }
 
     .science-photo-area {
-        min-height: 620px;
+        min-height: 650px;
 
-        padding-left: 35px;
+        padding-left: 50px;
+        padding-right: 20px;
+    }
+
+    .science-grouped-image {
+        width: 400px;
+        max-width: 75%;
     }
 
     .science-content-area {
-        min-height: 620px;
-    }
+        min-height: 650px;
 
-    .science-polaroid {
-        width: 325px;
-        height: 415px;
-    }
-
-    .science-sticker-top {
-        width: 78px;
-        left: 12%;
-        top: 16%;
-    }
-
-    .science-sticker-bottom {
-        width: 84px;
-        left: 50%;
-        bottom: 10%;
+        padding-top: 125px;
+        padding-left: 70px;
+        padding-right: 90px;
     }
 
     .science-title {
-        font-size: 2.45rem;
+        font-size: 3rem;
     }
 
     .science-subtitle {
-        font-size: 1.15rem;
+        font-size: 1.3rem;
     }
 
     .science-text {
-        font-size: 12px;
+        font-size: 15px;
+        line-height: 1.35;
     }
 }
 
 
 /* =========================================================
-   TABLET / MOBILE
+   TABLET
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
     .science-section {
-        grid-template-columns: 1fr;
+        grid-template-columns: 45% 55%;
+        min-height: 600px;
     }
 
     .science-photo-area {
-        min-height: 480px;
+        min-height: 600px;
+
+        padding:
+            40px
+            15px
+            40px
+            25px;
+    }
+
+    .science-grouped-image {
+        width: 100%;
+    }
+
+    .science-content-area {
+        min-height: 600px;
+
+        padding-top: 100px;
+        padding-left: 20px;
+        padding-right: 30px;
+    }
+
+    .science-title {
+        font-size: 2.2rem;
+    }
+
+    .science-subtitle {
+        font-size: 1.05rem;
+    }
+
+    .science-text {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .science-section {
+        display: block;
+
+        min-height: auto;
+
+        padding-bottom: 50px;
+    }
+
+    .science-photo-area {
+        min-height: auto;
+
+        padding:
+            55px
+            20px
+            20px;
+    }
+
+    .science-grouped-image {
+        width: min(100%, 500px);
     }
 
     .science-content-area {
         min-height: auto;
+
+        padding:
+            35px
+            24px
+            60px;
     }
 
     .science-content {
+        max-width: 100%;
+    }
+
+    .science-title {
+        font-size: 2.2rem;
+    }
+
+    .science-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .science-text {
+        font-size: 14px;
+
+        line-height: 1.45;
+    }
+
+    .science-button {
+        margin-top: 20px;
+
         padding:
-            50px 8vw 60px;
+            13px
+            24px;
+    }
+}
+
+/* =========================================================
+   SECTION 5 — WORN AND REVIEWED
+========================================================= */
+
+.reviews-section {
+    position: relative;
+
+    width: 100%;
+    min-height: 520px;
+
+    /*
+       Pull the reviews section over the
+       bottom of Section 4.
+    */
+    margin-top: -35px;
+
+    /*
+       Do NOT pull the bottom into Section 6.
+    */
+    margin-bottom: -35px;
+
+    padding: 65px 40px;
+
+    overflow: visible;
+
+    background: transparent;
+
+    z-index: 30;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   SECTION 5 — WORN AND REVIEWED
+   FULL FABRIC OVERLAY
+========================================================= */
+
+.reviews-section {
+    position: relative;
+
+    width: 100%;
+    min-height: 560px;
+
+    /*
+       Pull the whole fabric section upward
+       over the previous section.
+    */
+    margin-top: -55px;
+
+    /*
+       Pull the next section underneath it.
+    */
+    margin-bottom: -55px;
+
+    padding: 80px 40px 90px;
+
+    /*
+       This colour sits underneath the PNG so
+       no white/cream gap can appear.
+    */
+    background: #CFBDAB;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: visible;
+
+    /*
+       Keep Section 5 above the sections
+       before and after it.
+    */
+    z-index: 30;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   FABRIC
+   THIS CREATES BOTH TORN EDGES
+========================================================= */
+
+.reviews-section::before {
+    content: "";
+
+    position: absolute;
+
+    /*
+       Extend beyond the section on BOTH sides.
+       This allows the torn edges to cover
+       the neighbouring sections.
+    */
+    top: -30px;
+    bottom: -30px;
+
+    left: 0;
+    right: 0;
+
+    background-image:
+        url("/static/assets/images/vector-2.png");
+
+    background-repeat: no-repeat;
+
+    /*
+       Stretch the actual fabric across
+       the entire section.
+    */
+    background-size: 100% 100%;
+
+    background-position: center center;
+
+    /*
+       Fabric behind the cards,
+       but above the neighbouring sections.
+    */
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   REVIEW CONTENT
+========================================================= */
+
+.reviews-inner {
+    position: relative;
+
+    width: 100%;
+    max-width: 1120px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.reviews-title {
+    margin: 0 0 28px;
+
+    font-family: "Inter", sans-serif !important;
+
+    font-size: clamp(24px, 2vw, 31px);
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    color: var(--helina-chocolate);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   REVIEW SLIDER
+========================================================= */
+
+.reviews-slider {
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 40px;
+}
+
+
+/* =========================================================
+   REVIEW CARD
+========================================================= */
+
+.review-card {
+    position: relative;
+
+    width: 250px;
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.review-photo,
+.review-video {
+    position: relative;
+
+    width: 95px;
+    height: 95px;
+
+    background: var(--helina-cream);
+
+    border: 7px solid var(--helina-cream);
+
+    box-shadow:
+        2px 4px 8px rgba(0, 0, 0, 0.20);
+
+    overflow: hidden;
+
+    z-index: 4;
+}
+
+.review-photo img,
+.review-video img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   PHOTO ROTATIONS
+========================================================= */
+
+.review-card-one .review-photo {
+    transform: rotate(5deg);
+}
+
+.review-card-two .review-video {
+    transform: rotate(-4deg);
+}
+
+.review-card-three .review-photo {
+    transform: rotate(6deg);
+}
+
+
+/* =========================================================
+   VIDEO PLAY BUTTON
+========================================================= */
+
+.review-play {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--helina-teal);
+
+    color: white;
+
+    font-size: 13px;
+
+    padding-left: 2px;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   PAPER
+========================================================= */
+
+.review-paper {
+    position: relative;
+
+    width: 220px;
+    min-height: 190px;
+
+    margin-top: -10px;
+
+    padding: 75px 25px 25px;
+
+    background: var(--helina-cream);
+
+    box-shadow:
+        2px 5px 10px rgba(0, 0, 0, 0.12);
+
+    z-index: 2;
+
+    transform: rotate(-3deg);
+}
+
+
+/* Individual rotations */
+
+.review-card-one .review-paper {
+    transform: rotate(-4deg);
+}
+
+.review-card-two .review-paper {
+    transform: rotate(3deg);
+}
+
+.review-card-three .review-paper {
+    transform: rotate(-5deg);
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.review-stars {
+    margin-bottom: 10px;
+
+    color: var(--helina-orange);
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.review-quote {
+    margin: 0;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 10px;
+
+    line-height: 1.35;
+
+    color: var(--helina-chocolate);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   NAME
+========================================================= */
+
+.review-name {
+    margin: 12px 0 0;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    color: var(--helina-chocolate);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   PINS
+========================================================= */
+
+.review-pin {
+    position: absolute;
+
+    width: 28px;
+    height: 28px;
+
+    z-index: 10;
+
+    border-radius: 50%;
+
+    background: var(--helina-orange);
+
+    box-shadow:
+        1px 2px 4px rgba(0, 0, 0, 0.20);
+}
+
+.review-card-one .review-pin {
+    top: 42px;
+    left: 22px;
+}
+
+.review-card-two .review-pin {
+    top: 38px;
+    right: 24px;
+
+    background: var(--helina-cream);
+
+    border: 3px solid var(--helina-chocolate);
+}
+
+.review-card-three .review-pin {
+    top: 42px;
+    right: 18px;
+}
+
+
+/* =========================================================
+   ARROWS
+========================================================= */
+
+.reviews-arrow {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--helina-chocolate);
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 36px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+.reviews-arrow:hover {
+    color: var(--helina-burgundy);
+
+    transform:
+        translateY(-50%)
+        scale(1.15);
+}
+
+.reviews-arrow-left {
+    left: -25px;
+}
+
+.reviews-arrow-right {
+    right: -25px;
+}
+
+
+/* =========================================================
+   SHOP BUTTON
+========================================================= */
+
+.reviews-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 28px;
+
+    padding: 12px 25px;
+
+    background: var(--helina-orange);
+
+    color: white;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.reviews-button:hover {
+    transform: translateY(-2px);
+
+    background: var(--helina-burgundy);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .reviews-section {
+        padding-left: 25px;
+        padding-right: 25px;
     }
 
-    .science-polaroid {
-        width: min(285px, 72vw);
-        height: min(360px, 90vw);
+    .reviews-slider {
+        gap: 20px;
     }
 
-    .science-sticker-top {
-        left: 18%;
-        top: 13%;
+    .review-card {
+        width: 220px;
     }
 
-    .science-sticker-bottom {
-        left: 55%;
-        bottom: 8%;
+    .review-paper {
+        width: 195px;
+    }
+
+    .reviews-arrow-left {
+        left: -10px;
+    }
+
+    .reviews-arrow-right {
+        right: -10px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .reviews-section {
+        min-height: auto;
+
+        margin-top: -25px;
+        margin-bottom: -25px;
+
+        padding:
+            55px 20px
+            70px;
+    }
+
+    .reviews-slider {
+        flex-direction: column;
+
+        gap: 35px;
+    }
+
+    .review-card {
+        width: 250px;
+    }
+
+    .reviews-arrow {
+        display: none;
+    }
+
+    .reviews-title {
+        font-size: 25px;
     }
 }
