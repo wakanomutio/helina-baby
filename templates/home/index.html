@@ -13,56 +13,52 @@
 
 <body>
 
-    <header class="site-header relative z-50 h-[115px] w-full overflow-visible">
+   <!-- =========================================
+     HELINA BABY NAVBAR
+========================================= -->
 
-    <!-- NAVBAR FABRIC -->
+<header class="site-header">
+
     <img
-        src="{% static 'assets/images/Vector.png' %}"
+        src="{% static 'assets/images/header1.png' %}"
         alt=""
-        class="navbar-fabric absolute inset-0 h-full w-full"
+        class="navbar-fabric"
         aria-hidden="true"
     >
 
-    <!-- NAV CONTENT -->
-    <div class="relative z-10 mx-auto flex h-full w-full items-center px-8 md:px-12 lg:px-[4.5vw]">
+    <nav class="navbar-inner">
 
-        <!-- LEFT NAV -->
-        <div class="flex items-center gap-8">
-            <a href="#about" class="navbar-link">
-                About
-            </a>
-
-            <a href="#story" class="navbar-link">
-                Our Story
-            </a>
+        <!-- LEFT -->
+        <div class="navbar-left">
+            <a href="#shop" class="navbar-link">Shop</a>
+            <a href="#why-helina" class="navbar-link">Why Helina Baby?</a>
+            <a href="#education" class="navbar-link">Education</a>
         </div>
 
-
         <!-- CENTER LOGO -->
-        <a
-            href="#"
-            class="navbar-logo absolute left-1/2 top-[58%] -translate-x-1/2 -translate-y-1/2"
-        >
+        <a href="#" class="navbar-logo">
             <img
-                src="{% static 'assets/logo/helina-primary-logo.svg' %}"
-                alt="HeLina Baby"
+                src="{% static 'assets/logo/helina-logo2.png' %}"
+                alt="Helina Baby"
             >
         </a>
 
+        <!-- RIGHT -->
+        <div class="navbar-right">
+            <a href="#support" class="navbar-link">Carrier Support</a>
+            <a href="#registration" class="navbar-link">Product Registration</a>
+            <a href="#blog" class="navbar-link">Blog</a>
 
-        <!-- RIGHT NAV -->
-        <div class="ml-auto flex items-center gap-8">
-            <a href="#support" class="navbar-link">
-                Support
-            </a>
-
-            <a href="#contact" class="navbar-link">
-                Contact
+            <a href="#cart" class="navbar-cart" aria-label="Shopping cart">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 5h2l1.8 10.2a2 2 0 0 0 2 1.8h6.9a2 2 0 0 0 1.9-1.5L20 8H7"/>
+                    <circle cx="10" cy="20" r="1.3"/>
+                    <circle cx="18" cy="20" r="1.3"/>
+                </svg>
             </a>
         </div>
 
-    </div>
-
+    </nav>
 </header>
 
     <!-- =========================
@@ -71,109 +67,85 @@
     <main>
 
         <section
-            class="relative min-h-[calc(100vh-92px)] overflow-hidden border-b-[8px] border-[#25A3A4]"
+            class="hero-section relative min-h-[calc(100vh-68px)] overflow-hidden border-b-[8px] border-[#25A3A4]"
         >
 
             <!-- Hero image -->
-            <img
-                src="{% static 'assets/images/hero-family-couch.png' %}"
-                alt="Caregiver and child together"
-                class="absolute inset-0 h-full w-full object-cover"
-            >
-
-            <!-- Image overlay -->
-            <div class="absolute inset-0 bg-black/20"></div>
-
+           <!-- Hero image -->
+        <img
+            src="{% static 'assets/images/hero-family-couch2.png' %}"
+            alt="Caregiver and child together"
+            class="hero-family-image absolute inset-0 z-0 h-full w-full object-cover object-center"
+        >
 
             <!-- Coming Soon label -->
             <!-- Interactive Coming Soon -->
+<!-- =====================================================
+     COMING SOON — PREMIUM FABRIC TAG IMAGE
+===================================================== -->
+
 <a
     href="#waitlist"
-    id="comingSoonBadge"
-    class="coming-soon-badge group absolute left-6 top-8 z-30
-           flex min-h-[70px] min-w-[190px]
-           items-center justify-center
-           border-2 border-white
-           bg-[#F85E29]
-           px-7 py-4
-           shadow-[6px_6px_0_rgba(81,58,21,0.25)]
-           md:left-12 md:top-10
-           lg:left-[4.5vw] lg:top-12"
-    aria-label="Coming soon — join the waitlist"
+    class="coming-soon-image"
+    aria-label="Coming soon — get notified"
 >
-    <span
-        class="font-['Inter']
-               text-sm font-extrabold
-               uppercase
-               tracking-[0.2em]
-               text-white"
+    <img
+        src="{% static 'assets/images/coming2.png' %}"
+        alt="Helina Baby Coming Soon"
     >
-        Coming Soon
-    </span>
-
-    <!-- animated corner -->
-    <span
-        class="coming-soon-corner absolute
-               -right-3 -top-3
-               h-5 w-5
-               rounded-full
-               bg-[#2EE0E0]"
-    ></span>
 </a>
-
 
             <!-- Hero content -->
 <!-- Hero content -->
-<div class="relative z-10 flex min-h-[calc(100vh-100px)] items-end px-6 pb-5 md:px-12 md:pb-7 lg:px-20 lg:pb-9">
+<!-- =========================================================
+     HERO
+========================================================= -->
 
-    <div class="max-w-[340px] text-white">
+<section
+    class="hero-section relative min-h-[calc(100vh-68px)] overflow-hidden border-b-[8px] border-[#25A3A4]"
+>
 
-        <p class="mb-3 font-['Inter'] text-[11px] font-bold uppercase tracking-[0.28em] text-white/90">
-            HeLina Baby
-        </p>
+    <!-- HERO IMAGE -->
+    <img
+        src="{% static 'assets/images/hero-family-couch2.png' %}"
+        alt="Caregiver and child together"
+        class="hero-family-image absolute inset-0 z-0 h-full w-full object-cover object-center"
+    >
 
-        <h1
-            class="font-['Helina Baby']
-                   text-[clamp(2.7rem,4vw,4.4rem)]
-                   leading-[0.88]
-                   tracking-[-0.02em]"
-        >
-            Made for
-            <span class="block">every kind </span>
-            <span class="block">of day.</span>
+
+    <!-- =====================================================
+         HERO CONTENT
+    ====================================================== -->
+
+    <div class="hero-content">
+
+        <h1 class="hero-title">
+            <span>For</span>
+            <span>every</span>
+            <span>kind of</span>
+            <span>day.</span>
         </h1>
 
-        <p
-            class="mt-4 max-w-[320px]
-                   font-['Inter']
-                   text-sm leading-6
-                   text-white md:text-base md:leading-7"
-        >
-            Thoughtful design and honest support for the real journey of raising a child.
-        </p>
 
+        <!-- JOIN WAITLIST -->
         <a
             href="#waitlist"
-            class="mt-5 inline-flex items-center
-                   border-2 border-[#513A15]
-                   bg-[#F85E29]
-                   px-6 py-3
-                   font-['Inter']
-                   text-xs font-extrabold
-                   uppercase tracking-[0.14em]
-                   text-white
-                   transition-all duration-300
-                   hover:-translate-y-1
-                   hover:bg-[#B82D37]"
+            class="hero-waitlist"
         >
-            Join the Waitlist
+            <span class="hero-waitlist-text">
+                JOIN THE WAITLIST
+            </span>
+
+            <span class="hero-waitlist-arrow">
+                →
+            </span>
+
+            <span class="hero-button-shine"></span>
         </a>
 
     </div>
 
-</div>
-
-        </section>
+</section>
 
 
           <!-- =========================================
@@ -275,7 +247,7 @@
             <!-- Second photograph that appears as cursor moves right -->
             <div class="real-life-hover-photo">
                 <img
-                    src="{% static 'assets/images/mother-baby-box.png' %}"
+                    src="{% static 'assets/images/mother-baby-box2.png' %}"
                     alt="Mother and baby"
                 >
             </div>
@@ -507,105 +479,97 @@
 
 </section>
 
-<!-- =========================
-     ICON / BRAND STRIP
-========================== -->
-<section
-    class="relative overflow-hidden border-t-2 border-[#FBF8EF] bg-[#25A3A4]"
->
-    <div
-        class="mx-auto flex min-h-[190px] max-w-[1920px]
-               items-center justify-between
-               gap-8 px-8 py-12
-               md:px-16
-               lg:px-[8vw]"
-    >
+<!-- =========================================================
+     SECTION — YOUR JOURNEY DOESN'T END AT CHECKOUT
+========================================================= -->
 
-        <div class="flex flex-1 flex-col items-center gap-4 text-center">
-            <div
-                class="flex h-14 w-14 items-center justify-center
-                       rounded-full border-2 border-[#FBF8EF]
-                       text-2xl text-[#FBF8EF]"
+<section class="journey-section">
+
+    <div class="journey-inner">
+
+        <!-- LEFT CONTENT -->
+        <div class="journey-copy">
+
+            <h2>
+                Your journey doesn't end
+                <span>at checkout.</span>
+            </h2>
+
+            <h3>
+                And neither does our Commitment.
+            </h3>
+
+            <p>
+                Wearing your baby safely, confidently and comfortably is incredibly
+                important. And, sometimes a manual and a few diagrams just aren't
+                going to cut it.
+            </p>
+
+            <h3 class="journey-subtitle">
+                We Hear You.
+            </h3>
+
+            <p>
+                In many cultures, there has always been an auntie, elder or
+                experienced parent nearby to help. We believe that kind of
+                community still matters.
+            </p>
+
+            <p>
+                If you have questions about your Helina Baby Carrier,
+                <a href="#contact">contact us.</a>
+                We're here to help you figure it out.
+            </p>
+
+        </div>
+
+
+        <!-- RIGHT IMAGE -->
+        <div class="journey-visual">
+
+            <div class="journey-photo">
+
+                <img
+                    src="{% static 'assets/images/mother-baby-box.png' %}"
+                    alt="Mother and baby using the Helina Baby carrier"
+                >
+
+            </div>
+
+            <!-- HELINA LOGO -->
+            <img
+                src="{% static 'assets/images/helina-logo.png' %}"
+                alt="Helina Baby"
+                class="journey-logo"
             >
+
+            <!-- HEART -->
+            <div class="journey-heart">
                 ♡
             </div>
 
-            <p
-                class="font-['Inter'] text-[10px]
-                       font-semibold uppercase
-                       tracking-[0.16em] text-[#FBF8EF]"
-            >
-                Thoughtfully designed
-            </p>
-        </div>
-
-
-        <div class="hidden h-16 w-px bg-[#FBF8EF]/60 md:block"></div>
-
-
-        <div class="flex flex-1 flex-col items-center gap-4 text-center">
-            <div
-                class="flex h-14 w-14 items-center justify-center
-                       rounded-full border-2 border-[#FBF8EF]
-                       text-xl text-[#FBF8EF]"
-            >
-                ✦
-            </div>
-
-            <p
-                class="font-['Inter'] text-[10px]
-                       font-semibold uppercase
-                       tracking-[0.16em] text-[#FBF8EF]"
-            >
-                Made for real life
-            </p>
-        </div>
-
-
-        <div class="hidden h-16 w-px bg-[#FBF8EF]/60 md:block"></div>
-
-
-        <div class="flex flex-1 flex-col items-center gap-4 text-center">
-            <div
-                class="flex h-14 w-14 items-center justify-center
-                       rounded-full border-2 border-[#FBF8EF]
-                       text-2xl text-[#FBF8EF]"
-            >
-                ∞
-            </div>
-
-            <p
-                class="font-['Inter'] text-[10px]
-                       font-semibold uppercase
-                       tracking-[0.16em] text-[#FBF8EF]"
-            >
-                Built to last
-            </p>
-        </div>
-
-
-        <div class="hidden h-16 w-px bg-[#FBF8EF]/60 md:block"></div>
-
-
-        <div class="flex flex-1 flex-col items-center gap-4 text-center">
-            <div
-                class="flex h-14 w-14 items-center justify-center
-                       rounded-full border-2 border-[#FBF8EF]
-                       text-xl text-[#FBF8EF]"
-            >
-                ↗
-            </div>
-
-            <p
-                class="font-['Inter'] text-[10px]
-                       font-semibold uppercase
-                       tracking-[0.16em] text-[#FBF8EF]"
-            >
-                We hear you
-            </p>
         </div>
 
     </div>
+
+</section>
+
+<!-- =========================
+     ICON / BRAND STRIP
+========================== -->
+<!-- =========================
+     BRAND STANDARDS STRIP
+========================== -->
+
+<section
+    class="relative -mt-16 z-30 w-full overflow-hidden
+           border-t-2 border-[#FBF8EF]"
+>
+    <img
+        src="{% static 'assets/images/brands.png' %}"
+        alt="Helina Baby brand standards and certifications"
+        class="block w-full h-auto"
+    >
 </section>
 
 <!-- =========================
@@ -841,44 +805,131 @@
 
     </main>
 
-    <script>
+   <script>
 document.addEventListener("DOMContentLoaded", function () {
 
     const collage = document.querySelector(".real-life-collage");
     const hoverPhoto = document.querySelector(".real-life-hover-photo");
 
-    if (!collage || !hoverPhoto) {
-        console.error("Made for Real Life hover elements were not found.");
-        return;
+    if (!collage || !hoverPhoto) return;
+
+    let targetProgress = 0;
+    let currentProgress = 0;
+    let animationFrame = null;
+
+
+    /* =====================================================
+       ANIMATION LOOP
+    ===================================================== */
+
+    function animateReveal() {
+
+        /*
+         * Smoothly move current position toward
+         * the mouse position.
+         */
+        currentProgress +=
+            (targetProgress - currentProgress) * 0.12;
+
+
+        /*
+         * Convert progress into clipping.
+         *
+         * 0%   = completely hidden
+         * 100% = completely visible
+         */
+        const rightClip = 100 - currentProgress;
+
+        hoverPhoto.style.clipPath =
+            `inset(0 ${rightClip}% 0 0)`;
+
+
+        /*
+         * Keep animation running while movement
+         * is still happening.
+         */
+        if (
+            Math.abs(targetProgress - currentProgress) > 0.05
+        ) {
+
+            animationFrame =
+                requestAnimationFrame(animateReveal);
+
+        } else {
+
+            currentProgress = targetProgress;
+
+            hoverPhoto.style.clipPath =
+                `inset(0 ${100 - currentProgress}% 0 0)`;
+
+            animationFrame = null;
+        }
     }
+
+
+    /* =====================================================
+       MOUSE MOVE
+    ===================================================== */
 
     collage.addEventListener("mousemove", function (event) {
 
-        const rect = collage.getBoundingClientRect();
+        const rect =
+            collage.getBoundingClientRect();
 
-        const mouseX = event.clientX - rect.left;
-
-        const percentage = mouseX / rect.width;
 
         /*
-         * Left side = first image
-         * Right side = second image
+         * Cursor position inside collage
          */
-        const opacity = Math.max(
-            0,
-            Math.min(
-                1,
-                (percentage - 0.15) / 0.7
-            )
-        );
+        const mouseX =
+            event.clientX - rect.left;
 
-        hoverPhoto.style.opacity = opacity;
+
+        /*
+         * Convert to 0–100%
+         */
+        targetProgress =
+            (mouseX / rect.width) * 100;
+
+
+        /*
+         * Keep within bounds
+         */
+        targetProgress =
+            Math.max(
+                0,
+                Math.min(100, targetProgress)
+            );
+
+
+        /*
+         * Start animation if not already running
+         */
+        if (!animationFrame) {
+            animationFrame =
+                requestAnimationFrame(animateReveal);
+        }
+
     });
 
+
+    /* =====================================================
+       MOUSE LEAVE
+    ===================================================== */
 
     collage.addEventListener("mouseleave", function () {
-        hoverPhoto.style.opacity = "0";
+
+        /*
+         * Slowly return to the first image.
+         */
+        targetProgress = 0;
+
+        if (!animationFrame) {
+            animationFrame =
+                requestAnimationFrame(animateReveal);
+        }
+
     });
+
 
 });
 </script>

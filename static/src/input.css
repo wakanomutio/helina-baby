@@ -3,6 +3,15 @@
 /* =========================================================
    HELINA BABY — FONTS
 ========================================================= */
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+* {
+    box-sizing: border-box;
+}
 
 @font-face {
     font-family: "Helina Baby";
@@ -20,6 +29,14 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Inter";
+    src: url("/static/assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
 :root {
     --helina-chocolate: #513A15;
     --helina-light-brown: #CFBDAB;
@@ -32,34 +49,407 @@
 }
 
 /* =========================================================
-   NAVBAR — FABRIC
+   HELINA BABY — NAVBAR
+   PREMIUM / LARGER / CLEAR HOVER
+========================================================= */
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+/* =========================================================
+   HELINA BABY — NAVBAR
 ========================================================= */
 
 .site-header {
     position: relative;
-    height: 115px;
+
     width: 100%;
+    height: 68px;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    z-index: 100;
+
+    /* Allows logo/fabric edge to extend into hero */
     overflow: visible;
+}
+
+
+/* =========================================================
+   FABRIC / SHREDDED HEADER
+========================================================= */
+
+.navbar-fabric {
+    position: absolute;
+
+    top: 12px;
+    left: 0;
+
+    width: calc(100% + 20px);
+    height: 68px;
+
+    display: block;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: fill;
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   NAVBAR CONTENT
+========================================================= */
+
+.navbar-inner {
+    position: relative;
+
+    width: 100%;
+    height: 68px;
 
     /*
-       Keep the thin Helina turquoise divider.
+       IMPORTANT:
+       Keeps left navigation on the left
+       and right navigation on the right.
     */
-    border-bottom: 2px solid var(--helina-teal);
+    display: flex;
 
-    /*
-       Makes sure navbar stays above the hero.
-    */
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    padding: 0 28px;
+
     z-index: 100;
 }
 
 
-/* ---------------------------------------------------------
-   FABRIC IMAGE
---------------------------------------------------------- */
+/* =========================================================
+   LEFT NAVIGATION
+========================================================= */
 
-.navbar-fabric {
+.navbar-left {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 34px;
+
+    z-index: 40;
+
+    pointer-events: auto;
+
+    flex: 1;
+}
+
+
+/* =========================================================
+   RIGHT NAVIGATION
+========================================================= */
+
+.navbar-right {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 32px;
+
+    z-index: 40;
+
+    pointer-events: auto;
+
+    flex: 1;
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.navbar-link {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    color: #513A15;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    text-decoration: none;
+
+    z-index: 45;
+
+    padding: 8px 0;
+
+    transition:
+        color .25s ease,
+        transform .25s ease;
+}
+
+
+/* =========================================================
+   WAVY / SHREDDED HOVER UNDERLINE
+========================================================= */
+
+.navbar-link::after {
+    content: "";
+
     position: absolute;
-    inset: 0;
+
+    left: -2px;
+    bottom: -3px;
+
+    width: 0;
+    height: 8px;
+
+    background: #F85E29;
+
+    clip-path: polygon(
+        0 55%,
+        8% 15%,
+        17% 70%,
+        27% 5%,
+        37% 60%,
+        48% 20%,
+        58% 75%,
+        68% 10%,
+        78% 62%,
+        89% 18%,
+        100% 55%,
+        100% 85%,
+        89% 48%,
+        78% 92%,
+        68% 40%,
+        58% 95%,
+        48% 42%,
+        37% 90%,
+        27% 38%,
+        17% 95%,
+        8% 42%,
+        0 85%
+    );
+
+    transition: width .3s ease;
+}
+
+
+/* =========================================================
+   LINK HOVER
+========================================================= */
+
+.navbar-link:hover {
+    color: #F85E29;
+
+    transform: translateY(-2px);
+}
+
+.navbar-link:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   LINK FOCUS
+========================================================= */
+
+.navbar-link:focus-visible {
+    color: #F85E29;
+
+    outline: 2px solid #2EE0E0;
+    outline-offset: 5px;
+}
+
+
+/* =========================================================
+   CENTER LOGO
+========================================================= */
+
+.navbar-logo {
+    position: absolute;
+
+    /*
+       TRUE CENTER OF SCREEN
+    */
+    left: 50%;
+    top: 69px;
+
+    width: 145px;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 60;
+
+    display: block;
+
+    pointer-events: auto;
+
+    transition:
+        transform .3s ease,
+        filter .3s ease;
+}
+
+
+/* =========================================================
+   LOGO IMAGE
+========================================================= */
+
+.navbar-logo img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    filter:
+        drop-shadow(
+            0 3px 3px
+            rgba(81, 58, 21, .16)
+        );
+}
+
+
+/* =========================================================
+   LOGO HOVER
+========================================================= */
+
+.navbar-logo:hover {
+    transform:
+        translate(-50%, -50%)
+        scale(1.07);
+
+    filter:
+        drop-shadow(
+            0 7px 9px
+            rgba(81, 58, 21, .22)
+        );
+}
+
+
+/* =========================================================
+   SHOPPING CART
+========================================================= */
+
+.navbar-cart {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    color: #513A15;
+
+    z-index: 45;
+
+    pointer-events: auto;
+
+    text-decoration: none;
+
+    flex-shrink: 0;
+
+    transition:
+        color .25s ease,
+        transform .25s ease;
+}
+
+
+/* =========================================================
+   CART ICON
+========================================================= */
+
+.navbar-cart svg {
+    display: block;
+
+    width: 21px;
+    height: 21px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    transition:
+        transform .25s ease;
+}
+
+
+/* =========================================================
+   CART HOVER
+========================================================= */
+
+.navbar-cart:hover {
+    color: #F85E29;
+
+    transform:
+        translateY(-2px)
+        scale(1.08);
+}
+
+.navbar-cart:hover svg {
+    transform: rotate(-5deg);
+}
+
+
+/* =========================================================
+   HERO — BEHIND NAVBAR
+========================================================= */
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+.hero-section {
+    position: relative;
+
+    width: 100%;
+    min-height: calc(100vh - 68px);
+
+    overflow: hidden;
+
+    z-index: 1;
+
+    border-bottom: 8px solid #25A3A4;
+}
+
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.hero-family-image {
+    position: absolute;
+
+    top: 0;
+    left: 0;
 
     width: 100%;
     height: 100%;
@@ -67,66 +457,328 @@
     object-fit: cover;
     object-position: center center;
 
+    display: block;
+
     z-index: 0;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content {
+    position: absolute;
+
+    left: 8%;
+
+    /* MOVE CONTENT UP */
+    bottom: 24%;
+
+    z-index: 20;
+
+    width: auto;
+
     pointer-events: none;
 }
 
 
-/* ---------------------------------------------------------
-   NAV LINKS
---------------------------------------------------------- */
+/* =========================================================
+   HERO TITLE
+========================================================= */
 
-.navbar-link {
+.hero-title {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Montserrat Arabic", "Montserrat", sans-serif;
+
+    /*
+       Figma is approximately 60px,
+       not 70–90px.
+    */
+    font-size: 60px;
+
+    font-weight: 800;
+
+    line-height: 0.86;
+
+    letter-spacing: -0.045em;
+
+    color: #ffffff;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TITLE LINES
+========================================================= */
+
+.hero-title span {
+    display: block;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================================
+   WAITLIST BUTTON
+========================================================= */
+
+.hero-waitlist {
     position: relative;
 
-    font-family: "Inter", sans-serif;
-    font-size: 13px;
-    font-weight: 700;
+    display: inline-flex;
 
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-
-    color: var(--helina-chocolate);
-
-    text-decoration: none;
-
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease;
-}
-
-.navbar-link:hover {
-    color: var(--helina-burgundy);
-    transform: translateY(-1px);
-}
-
-
-/* ---------------------------------------------------------
-   CENTER LOGO
---------------------------------------------------------- */
-
-.navbar-logo {
-    z-index: 20;
-
-    display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 150px;
+    gap: 8px;
 
-    /*
-       Lets the logo sit slightly below
-       the center of the fabric.
-    */
+    width: 154px;
+    height: 41px;
+
+    margin-top: 23px;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    border: 0;
+    border-radius: 5px;
+
+    background: #F85E29;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    pointer-events: auto;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.16);
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-.navbar-logo img {
-    display: block;
 
-    width: 150px;
-    height: auto;
+/* =========================================================
+   BUTTON TEXT
+========================================================= */
+
+.hero-waitlist-text {
+    position: relative;
+
+    z-index: 3;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    line-height: 1;
+
+    white-space: nowrap;
 }
 
+
+/* =========================================================
+   BUTTON ARROW
+========================================================= */
+
+.hero-waitlist-arrow {
+    position: relative;
+
+    z-index: 3;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 50%;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1;
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+
+/* =========================================================
+   BUTTON SHINE
+========================================================= */
+
+.hero-button-shine {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: -80%;
+
+    width: 55%;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    transform: skewX(-20deg);
+
+    pointer-events: none;
+
+    transition: left 0.65s ease;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.hero-waitlist:hover {
+    transform: translateY(-2px);
+
+    background: #FF7040;
+
+    box-shadow:
+        0 7px 16px rgba(0, 0, 0, 0.22);
+}
+
+.hero-waitlist:hover .hero-waitlist-arrow {
+    transform: translateX(3px);
+
+    background: #ffffff;
+
+    color: #F85E29;
+}
+
+.hero-waitlist:hover .hero-button-shine {
+    left: 130%;
+}
+
+
+/* =========================================================
+   BUTTON ACTIVE
+========================================================= */
+
+.hero-waitlist:active {
+    transform: translateY(0) scale(0.98);
+}
+
+
+/* =========================================================
+   BUTTON FOCUS
+========================================================= */
+
+.hero-waitlist:focus-visible {
+    outline: 2px solid #2EE0E0;
+
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    .hero-content {
+        left: 11%;
+        bottom: 8.5%;
+    }
+
+    .hero-title {
+        font-size: 60px;
+    }
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .hero-content {
+        left: 8%;
+        bottom: 8%;
+    }
+
+    .hero-title {
+        font-size: 56px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .hero-content {
+        left: 7%;
+        bottom: 7%;
+    }
+
+    .hero-title {
+        font-size: 52px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .hero-section {
+        min-height: calc(100vh - 60px);
+    }
+
+    .hero-content {
+        left: 7vw;
+        bottom: 6vh;
+    }
+
+    .hero-title {
+        font-size: clamp(44px, 13vw, 56px);
+
+        line-height: 0.88;
+
+        letter-spacing: -0.04em;
+    }
+
+    .hero-waitlist {
+        width: 150px;
+        height: 40px;
+
+        margin-top: 20px;
+    }
+}
 /* =========================================================
    BRAND COLOURS
 ========================================================= */
@@ -175,51 +827,474 @@ h3 {
    HERO — COMING SOON
 ========================================================= */
 
-@keyframes comingSoonFloat {
-    0%,
-    100% {
-        transform: translateY(0) rotate(0deg);
+/* =========================================================
+   HELINA BABY — COMING SOON FABRIC TAG
+   Current Design
+========================================================= */
+
+
+/* =========================================================
+   MAIN COMING SOON TAG
+========================================================= */
+
+.coming-soon-image {
+    position: absolute;
+
+    /* Position */
+    top: -15;
+    right: 3.8vw;
+
+    width: 340px;
+
+    /* Layering */
+    z-index: 35;
+
+    /* Behaviour */
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+
+    /* Hanging point */
+    transform-origin: 50% 0%;
+
+    /* Smooth pendulum */
+    animation:
+        comingSoonSwing 6s
+        cubic-bezier(.45, .05, .55, .95)
+        infinite;
+
+    will-change: transform;
+
+    transition:
+        filter .4s ease;
+}
+
+
+/* =========================================================
+   SMOOTH 45° PENDULUM
+========================================================= */
+
+@keyframes comingSoonSwing {
+
+    0% {
+        transform: rotate(-45deg);
     }
 
     50% {
-        transform: translateY(-5px) rotate(-1deg);
+        transform: rotate(45deg);
+    }
+
+    100% {
+        transform: rotate(-45deg);
     }
 }
 
-.coming-soon-badge {
-    animation: comingSoonFloat 3.5s ease-in-out infinite;
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.coming-soon-image img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-width: none;
+
+    object-fit: contain;
+
+    background: transparent;
+
+    user-select: none;
+    -webkit-user-drag: none;
+
+    transition:
+        transform .4s ease,
+        filter .4s ease;
 }
 
-.coming-soon-badge:hover {
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.coming-soon-image:hover {
     animation-play-state: paused;
-    background-color: var(--helina-burgundy);
-    transform: translateY(-4px) rotate(-2deg) scale(1.04);
+
+    filter:
+        drop-shadow(
+            0 18px 28px
+            rgba(81, 58, 21, .22)
+        );
 }
 
-@keyframes comingSoonPulse {
+
+.coming-soon-image:hover img {
+    transform: scale(1.025);
+
+    filter:
+        brightness(1.04)
+        saturate(1.04);
+}
+
+
+/* =========================================================
+   POPUP — "BE THE FIRST TO KNOW"
+========================================================= */
+
+.coming-soon-popup {
+    position: absolute;
+
+    left: 50%;
+    bottom: -18px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 15px;
+
+    background: #FBF8EF;
+    color: #513A15;
+
+    border-radius: 999px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .05em;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, .18);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform:
+        translate(-50%, 12px)
+        scale(.88);
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease,
+        transform .4s cubic-bezier(.2, .8, .2, 1);
+
+    z-index: 50;
+}
+
+
+/* =========================================================
+   POPUP DOT
+========================================================= */
+
+.popup-dot {
+    width: 7px;
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #F85E29;
+
+    box-shadow:
+        0 0 0 4px rgba(248, 94, 41, .14);
+
+    animation:
+        popupPulse 1.8s ease-in-out infinite;
+}
+
+
+@keyframes popupPulse {
+
     0%,
     100% {
         transform: scale(1);
+        opacity: 1;
     }
 
     50% {
         transform: scale(1.3);
+        opacity: .7;
     }
 }
 
-.coming-soon-corner {
-    animation: comingSoonPulse 2s ease-in-out infinite;
+
+/* =========================================================
+   SHOW POPUP
+========================================================= */
+
+.coming-soon-image:hover .coming-soon-popup {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translate(-50%, 0)
+        scale(1);
+}
+
+
+/* =========================================================
+   FLOATING STAR / BADGE
+========================================================= */
+
+.coming-soon-bubble {
+    position: absolute;
+
+    top: -14px;
+    right: -14px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #F85E29;
+    color: #FBF8EF;
+
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+
+    box-shadow:
+        0 6px 16px rgba(0, 0, 0, .18);
+
+    transition:
+        transform .35s ease,
+        background .35s ease,
+        box-shadow .35s ease;
+
+    z-index: 45;
+}
+
+
+/* =========================================================
+   BADGE HOVER
+========================================================= */
+
+.coming-soon-image:hover .coming-soon-bubble {
+    transform:
+        rotate(15deg)
+        scale(1.12);
+
+    background: #B82D37;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, .25);
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.coming-soon-image:focus-visible {
+    outline: 3px solid #2EE0E0;
+    outline-offset: 5px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .coming-soon-image {
+        animation: none;
+        transform: rotate(0deg);
+    }
+
+    .popup-dot {
+        animation: none;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .coming-soon-image {
+        right: 2vw;
+        width: 250px;
+    }
+
+    .coming-soon-popup {
+        font-size: 9px;
+        padding: 8px 12px;
+    }
+
+    .coming-soon-bubble {
+        width: 30px;
+        height: 30px;
+
+        top: -10px;
+        right: -10px;
+
+        font-size: 14px;
+    }
 }
 
 /* =========================================================
-   NAVBAR
+   ACCESSIBILITY
 ========================================================= */
 
-.helina-navbar {
-    position: relative;
-    z-index: 50;
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .coming-soon-image {
+        animation: none;
+    }
+
+    .coming-soon-image,
+    .coming-soon-image img,
+    .coming-soon-popup,
+    .coming-soon-bubble {
+        transition: none;
+    }
+}
+/* =========================================================
+   LARGE SCREENS
+========================================================= */
+
+@media (min-width: 1440px) {
+
+    .coming-soon-image {
+        right: 4vw;
+
+        width: 370px;
+    }
 }
 
+
+/* =========================================================
+   LAPTOP / TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .coming-soon-image {
+        right: 2vw;
+
+        width: 300px;
+    }
+}
+
+
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .coming-soon-image {
+        animation: none;
+    }
+
+    .coming-soon-image,
+    .coming-soon-image img,
+    .coming-soon-popup,
+    .coming-soon-bubble {
+        transition: none;
+    }
+}
+/* =========================================================
+   LARGE SCREENS
+========================================================= */
+
+@media (min-width: 1440px) {
+
+    .coming-soon-image {
+        right: 4vw;
+
+        width: 370px;
+    }
+}
+
+
+/* =========================================================
+   LAPTOP / TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .coming-soon-image {
+        right: 2vw;
+
+        width: 300px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .coming-soon-image {
+
+        right: -10px;
+
+        top: 0;
+
+        width: 230px;
+
+        transform: rotate(1deg);
+    }
+
+    .coming-soon-image:hover {
+
+        transform:
+            translateY(3px)
+            rotate(-1deg)
+            scale(1.02);
+    }
+}
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+    .site-header {
+        height: 76px;
+    }
+
+    .navbar-inner {
+        height: 76px;
+
+        justify-content: center;
+
+        padding: 0 20px;
+    }
+
+    .navbar-left,
+    .navbar-right {
+        display: none;
+    }
+
+    .navbar-logo {
+        width: 105px;
+    }
+}
 /* =========================================================
    SECTION 2 — WE HEAR YOU
    Fabric overlaps hero and remains visible on all edges
@@ -636,6 +1711,7 @@ h3 {
     position: relative;
     width: 100%;
     min-height: 620px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -643,10 +1719,19 @@ h3 {
 
 .real-life-collage {
     position: relative;
+
     width: min(620px, 94%);
+
+    /*
+       BOTH IMAGES MUST SHARE THIS EXACT FRAME
+    */
     aspect-ratio: 1222 / 1287;
+
     overflow: hidden;
+
     cursor: ew-resize;
+
+    isolation: isolate;
 }
 
 
@@ -658,12 +1743,25 @@ h3 {
 
 .real-life-scrapbook {
     position: absolute;
+
     inset: 0;
+
     width: 100%;
     height: 100%;
+
+    display: block;
+
+    /*
+       EXACT SAME SIZING AS SECOND IMAGE
+    */
     object-fit: contain;
-    z-index: 2;
+    object-position: center;
+
+    z-index: 1;
+
     pointer-events: none;
+
+    user-select: none;
 }
 
 
@@ -677,45 +1775,86 @@ h3 {
 .real-life-hover-photo {
     position: absolute;
 
-    /* photo opening inside the scrapbook */
-    left: 10.8%;
-    top: 7%;
-    width: 78%;
-    height: 80%;
+    inset: 0;
 
-    overflow: hidden;
-
-    /*
-       IMPORTANT:
-       This must be ABOVE the scrapbook image
-       so the second photo can actually appear.
-    */
-    z-index: 4;
-
-    opacity: 0;
-    pointer-events: none;
-
-    transition: opacity 0.15s ease;
-
-    /*
-       Slight irregular shape to follow
-       the scrapbook photograph.
-    */
-    clip-path: polygon(
-        1% 4%,
-        97% 0%,
-        100% 96%,
-        4% 100%
-    );
-}
-
-.real-life-hover-photo img {
-    display: block;
     width: 100%;
     height: 100%;
 
-    object-fit: cover;
+    overflow: hidden;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+    /*
+       START COMPLETELY HIDDEN.
+
+       The FIRST image underneath remains visible.
+    */
+    clip-path: inset(
+        0 100% 0 0
+    );
+
+    /*
+       Smooth transition rather than a sudden jump.
+    */
+    transition:
+        clip-path 0.12s linear;
+
+    will-change: clip-path;
+}
+
+
+/* =========================================================
+   SECOND IMAGE
+========================================================= */
+
+.real-life-hover-photo img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    /*
+       EXACT SAME BEHAVIOUR AS FIRST IMAGE
+    */
+    object-fit: contain;
     object-position: center;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+}
+
+
+/* =========================================================
+   VERY SUBTLE EDGE BLEND
+========================================================= */
+
+.real-life-hover-photo::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 12px;
+
+    right: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            rgba(251,248,239,.22)
+        );
 
     pointer-events: none;
 }
@@ -1341,15 +2480,11 @@ h3 {
     min-height: 520px;
 
     /*
-       Pull the reviews section over the
-       bottom of Section 4.
+       Move Section 5 down 20px.
     */
-    margin-top: -35px;
+    margin-top: 12px;
 
-    /*
-       Do NOT pull the bottom into Section 6.
-    */
-    margin-bottom: -35px;
+    margin-bottom: 0;
 
     padding: 65px 40px;
 
@@ -1362,52 +2497,6 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-
-/* =========================================================
-   SECTION 5 — WORN AND REVIEWED
-   FULL FABRIC OVERLAY
-========================================================= */
-
-.reviews-section {
-    position: relative;
-
-    width: 100%;
-    min-height: 560px;
-
-    /*
-       Pull the whole fabric section upward
-       over the previous section.
-    */
-    margin-top: -55px;
-
-    /*
-       Pull the next section underneath it.
-    */
-    margin-bottom: -55px;
-
-    padding: 80px 40px 90px;
-
-    /*
-       This colour sits underneath the PNG so
-       no white/cream gap can appear.
-    */
-    background: #CFBDAB;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    overflow: visible;
-
-    /*
-       Keep Section 5 above the sections
-       before and after it.
-    */
-    z-index: 30;
-
-    isolation: isolate;
 }
 
 
@@ -1907,4 +2996,494 @@ h3 {
     .reviews-title {
         font-size: 25px;
     }
+}
+
+
+
+/* ---------------------------------------------------------
+   HERO
+   Hero starts at the VERY TOP underneath the navbar.
+--------------------------------------------------------- */
+main {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+main > section:first-child {
+    position: relative;
+
+    min-height: 100vh !important;
+
+    margin: 0 !important;
+    padding: 0;
+
+    overflow: hidden;
+
+    /* Creates a clean stacking layer */
+    isolation: isolate;
+
+    z-index: 0;
+}
+
+
+/* ---------------------------------------------------------
+   HERO IMAGE
+   Position/composition stays unchanged
+--------------------------------------------------------- */
+
+main > section:first-child > img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    z-index: 0;
+}
+
+
+/* ---------------------------------------------------------
+   HERO OVERLAY
+--------------------------------------------------------- */
+
+main > section:first-child > .bg-black\/20 {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+}
+
+
+/* ---------------------------------------------------------
+   HERO CONTENT
+--------------------------------------------------------- */
+
+main > section:first-child > .relative {
+    position: relative;
+
+    z-index: 10;
+}
+
+
+.hero-family-image {
+    transform: none !important;
+    scale: 1 !important;
+    filter: none !important;
+    z-index: 0 !important;
+}
+
+/* =========================================================
+   JOURNEY SECTION
+   YOUR JOURNEY DOESN'T END AT CHECKOUT
+========================================================= */
+
+.journey-section {
+    position: relative;
+    width: 100%;
+
+    height: 520px;
+
+    /* Move the section downward */
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    background-image:
+        url("/static/assets/images/redVector.png");
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+
+    z-index: 20;
+}
+
+
+/* =========================================================
+   INNER
+========================================================= */
+
+.journey-inner {
+    position: relative;
+
+    width: 100%;
+    max-width: 1200px;
+    min-height: 390px;
+
+    margin: 0 auto;
+    padding: 55px 7vw;
+
+    display: grid;
+    grid-template-columns: 48% 52%;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+========================================================= */
+
+.journey-copy {
+    position: relative;
+
+    max-width: 390px;
+
+    z-index: 5;
+
+    color: #FFFFFF;
+}
+
+
+.journey-copy h2 {
+    margin: 0;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: clamp(24px, 3vw, 36px);
+
+    font-weight: 800;
+
+    line-height: .95;
+
+    letter-spacing: -0.04em;
+
+    color: #2EE0E0;
+}
+
+
+.journey-copy h2 span {
+    display: block;
+}
+
+
+.journey-copy h3 {
+    margin: 7px 0 14px;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    color: #FFFFFF;
+}
+
+
+.journey-copy p {
+    margin: 0 0 12px;
+
+    max-width: 370px;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 500;
+
+    line-height: 1.45;
+
+    color: #FFFFFF;
+}
+
+
+.journey-copy .journey-subtitle {
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+
+
+.journey-copy a {
+    color: #FFFFFF;
+
+    font-weight: 800;
+
+    text-decoration: underline;
+
+    text-underline-offset: 2px;
+
+    transition:
+        color .25s ease,
+        opacity .25s ease;
+}
+
+
+.journey-copy a:hover {
+    color: #2EE0E0;
+}
+
+
+/* =========================================================
+   RIGHT VISUAL
+========================================================= */
+
+.journey-visual {
+    position: relative;
+
+    width: 100%;
+    height: 330px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 4;
+}
+
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.journey-photo {
+    position: relative;
+
+    width: 285px;
+    height: 230px;
+
+    padding: 8px;
+
+    background: #FBF8EF;
+
+    transform:
+        rotate(-10deg)
+        translateX(15px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, .15);
+
+    z-index: 3;
+
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        box-shadow .5s ease;
+}
+
+
+.journey-photo img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.journey-logo {
+    position: absolute;
+
+    left: 23%;
+    bottom: 37px;
+
+    width: 100px;
+    height: auto;
+
+    transform: rotate(-5deg);
+
+    z-index: 6;
+
+    filter:
+        drop-shadow(0 3px 4px rgba(0, 0, 0, .15));
+
+    transition:
+        transform .4s ease;
+}
+
+
+/* =========================================================
+   HEART BADGE
+========================================================= */
+
+.journey-heart {
+    position: absolute;
+
+    top: 42px;
+    right: 18%;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #FBF8EF;
+
+    color: #513A15;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 27px;
+    line-height: 1;
+
+    transform: rotate(12deg);
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, .12);
+
+    z-index: 7;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .journey-photo:hover {
+        transform:
+            rotate(-7deg)
+            translateX(15px)
+            translateY(-5px)
+            scale(1.025);
+
+        box-shadow:
+            0 14px 28px rgba(0, 0, 0, .20);
+    }
+
+    .journey-photo:hover + .journey-logo {
+        transform:
+            rotate(-5deg)
+            scale(1.05);
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .journey-inner {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+
+    .journey-photo {
+        width: 250px;
+        height: 205px;
+    }
+
+    .journey-logo {
+        left: 20%;
+        bottom: 40px;
+    }
+
+    .journey-heart {
+        right: 10%;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .journey-section {
+        min-height: auto;
+
+        background-size: cover;
+        background-position: center;
+    }
+
+    .journey-inner {
+        min-height: auto;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 30px;
+
+        padding:
+            55px 25px
+            65px;
+    }
+
+    .journey-copy {
+        max-width: 500px;
+
+        text-align: left;
+    }
+
+    .journey-copy h2 {
+        font-size: 30px;
+    }
+
+    .journey-visual {
+        height: 290px;
+        width: 100%;
+    }
+
+    .journey-photo {
+        width: 245px;
+        height: 195px;
+    }
+
+    .journey-logo {
+        left: 24%;
+        bottom: 28px;
+        width: 90px;
+    }
+
+    .journey-heart {
+        top: 35px;
+        right: 15%;
+        width: 38px;
+        height: 38px;
+        font-size: 24px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .journey-inner {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .journey-copy h2 {
+        font-size: 27px;
+    }
+
+    .journey-photo {
+        width: 220px;
+        height: 175px;
+    }
+
+    .journey-logo {
+        left: 20%;
+        bottom: 35px;
+    }
+
 }
