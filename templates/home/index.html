@@ -61,101 +61,59 @@
     </nav>
 </header>
 
-    <!-- =========================
-         HERO
-    ========================== -->
-    <main>
+    
+<!-- HERO SECTION — SINGLE, CORRECT STRUCTURE -->
+<main>
+    <section class="hero-section">
 
-        <section
-            class="hero-section relative min-h-[calc(100vh-68px)] overflow-hidden border-b-[8px] border-[#25A3A4]"
-        >
-
-            <!-- Hero image -->
-           <!-- Hero image -->
+        <!-- Hero background image -->
         <img
-            src="{% static 'assets/images/hero-family-couch2.png' %}"
+            src="{% static 'assets/images/hero-family-couch3.png' %}"
             alt="Caregiver and child together"
-            class="hero-family-image absolute inset-0 z-0 h-full w-full object-cover object-center"
+            class="hero-family-image"
         >
 
-            <!-- Coming Soon label -->
-            <!-- Interactive Coming Soon -->
-<!-- =====================================================
-     COMING SOON — PREMIUM FABRIC TAG IMAGE
-===================================================== -->
-
-<a
-    href="#waitlist"
-    class="coming-soon-image"
-    aria-label="Coming soon — get notified"
->
-    <img
-        src="{% static 'assets/images/coming2.png' %}"
-        alt="Helina Baby Coming Soon"
-    >
-</a>
-
-            <!-- Hero content -->
-<!-- Hero content -->
-<!-- =========================================================
-     HERO
-========================================================= -->
-
-<section
-    class="hero-section relative min-h-[calc(100vh-68px)] overflow-hidden border-b-[8px] border-[#25A3A4]"
->
-
-    <!-- HERO IMAGE -->
-    <img
-        src="{% static 'assets/images/hero-family-couch2.png' %}"
-        alt="Caregiver and child together"
-        class="hero-family-image absolute inset-0 z-0 h-full w-full object-cover object-center"
-    >
-
-
-    <!-- =====================================================
-         HERO CONTENT
-    ====================================================== -->
-
-    <div class="hero-content">
-
-        <h1 class="hero-title">
-            <span>For</span>
-            <span>every</span>
-            <span>kind of</span>
-            <span>day.</span>
-        </h1>
-
-
-        <!-- JOIN WAITLIST -->
+        <!-- Coming Soon badge -->
         <a
             href="#waitlist"
-            class="hero-waitlist"
+            class="coming-soon-image"
+            aria-label="Coming soon — get notified"
         >
-            <span class="hero-waitlist-text">
-                JOIN THE WAITLIST
-            </span>
-
-            <span class="hero-waitlist-arrow">
-                →
-            </span>
-
-            <span class="hero-button-shine"></span>
+            <img
+                src="{% static 'assets/images/coming2.png' %}"
+                alt="Helina Baby Coming Soon"
+            >
         </a>
 
-    </div>
+        <!-- Hero content -->
+        <div class="hero-content">
 
-</section>
+            <!-- Keep your existing hero heading here, if applicable -->
 
+            <a href="#waitlist" class="hero-waitlist">
+                <span class="hero-waitlist-text">
+                    JOIN THE WAITLIST
+                </span>
 
-          <!-- =========================================
-     SECTION 2 — WE HEAR YOU
-========================================= -->
+                <span class="hero-waitlist-arrow">→</span>
+                <span class="hero-button-shine"></span>
+            </a>
+
+        </div>
+    </section>
+
+   
+<!-- SECTION 2 — WE HEAR YOU -->
 <section id="story" class="we-hear-you">
 
+    <!-- Fabric and stitching layers -->
+    <div
+        class="we-hear-you-stitch"
+        style="--we-hear-fabric: url('{% static 'assets/images/we-hear-you-fabric.png' %}'); --we-hear-stitch: url('{% static 'assets/Stitching/Stitching1.png' %}');"
+        aria-hidden="true">
+    </div>
 
-
-    <!-- LEFT: Figma artwork -->
+    <!-- LEFT: Artwork -->
     <div class="we-hear-you-artwork">
         <img
             src="{% static 'assets/images/2mart.png' %}"
@@ -163,7 +121,7 @@
         >
     </div>
 
-    <!-- RIGHT: Figma text -->
+    <!-- RIGHT: Text -->
     <div class="we-hear-you-copy">
 
         <h2 class="we-hear-you-heading">
@@ -192,10 +150,16 @@
 
 </section>
 
+<!-- Keep the remaining landing-page sections here, in their existing order. -->
+
+</main>
+
+
+
 <!-- SECTION 3: ONE CARRIER -->
 <section id="real-life" class="made-real-life">
 
-    <!-- LEFT: Figma text -->
+    <!-- LEFT: TEXT CONTENT -->
     <div class="real-life-content">
 
         <h2 class="real-life-title">
@@ -225,14 +189,14 @@
             No readjusting. No figuring out whose settings were whose.
         </p>
 
+        <!-- WHY HELINA BUTTON -->
         <a href="#waitlist" class="real-life-button">
             WHY HELINA?
         </a>
 
     </div>
 
-
-    <!-- RIGHT: scrapbook / changing photograph -->
+    <!-- RIGHT: SCRAPBOOK / CHANGING PHOTOGRAPH -->
     <div class="real-life-visual">
 
         <div class="real-life-collage">
@@ -244,7 +208,7 @@
                 class="real-life-scrapbook"
             >
 
-            <!-- Second photograph that appears as cursor moves right -->
+            <!-- Second photograph revealed by cursor movement -->
             <div class="real-life-hover-photo">
                 <img
                     src="{% static 'assets/images/mother-baby-box2.png' %}"
@@ -257,6 +221,7 @@
     </div>
 
 </section>
+
 
     
 
@@ -572,236 +537,76 @@
     >
 </section>
 
-<!-- =========================
-     FOOTER
-========================== -->
-<footer
-    id="contact"
-    class="border-t-2 border-[#25A3A4] bg-[#FBF8EF]"
->
 
-    <div
-        class="mx-auto max-w-[1920px]
-               px-8 py-16
-               md:px-16
-               lg:px-[8vw] lg:py-20"
-    >
+{% load static %}
 
-        <div
-            class="grid gap-12
-                   md:grid-cols-2
-                   lg:grid-cols-4"
-        >
+<footer class="helina-footer">
+    <div class="footer-content">
 
-            <!-- Brand -->
-            <div>
-
+        <!-- Logo -->
+        <div class="footer-brand">
+            <a href="/" aria-label="Helina Baby home">
                 <img
-                    src="{% static 'assets/logo/helina-primary-logo.svg' %}"
-                    alt="HeLina Baby"
-                    class="w-[150px]"
+                    src="{% static 'assets/images/helina-logo.png' %}"
+                    alt="Helina Baby"
+                    class="footer-logo"
                 >
-
-                <p
-                    class="mt-6 max-w-[270px]
-                           font-['Inter']
-                           text-sm leading-6
-                           text-[#513A15]"
-                >
-                    Made for every kind of day.
-                </p>
-
-                <p
-                    class="mt-3
-                           font-['Inter']
-                           text-xs leading-5
-                           text-[#513A15]/70"
-                >
-                    We hear you.
-                </p>
-
-            </div>
-
-
-            <!-- Explore -->
-            <div>
-
-                <h3
-                    class="font-['Inter']
-                           text-xs font-bold
-                           uppercase tracking-[0.18em]
-                           text-[#B82D37]"
-                >
-                    Explore
-                </h3>
-
-                <div class="mt-6 space-y-3">
-
-                    <a
-                        href="#about"
-                        class="block font-['Inter']
-                               text-sm text-[#513A15]
-                               hover:text-[#B82D37]"
-                    >
-                        About
-                    </a>
-
-                    <a
-                        href="#story"
-                        class="block font-['Inter']
-                               text-sm text-[#513A15]
-                               hover:text-[#B82D37]"
-                    >
-                        Our Story
-                    </a>
-
-                    <a
-                        href="#support"
-                        class="block font-['Inter']
-                               text-sm text-[#513A15]
-                               hover:text-[#B82D37]"
-                    >
-                        Support
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- Contact -->
-            <div>
-
-                <h3
-                    class="font-['Inter']
-                           text-xs font-bold
-                           uppercase tracking-[0.18em]
-                           text-[#B82D37]"
-                >
-                    Contact
-                </h3>
-
-                <div class="mt-6 space-y-3">
-
-                    <a
-                        href="mailto:hello@helinababy.com"
-                        class="block font-['Inter']
-                               text-sm text-[#513A15]
-                               hover:text-[#B82D37]"
-                    >
-                        hello@helinababy.com
-                    </a>
-
-                    <p
-                        class="font-['Inter']
-                               text-sm text-[#513A15]"
-                    >
-                        Follow along as we get ready.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- Waitlist -->
-            <div id="waitlist">
-
-                <h3
-                    class="font-['Inter']
-                           text-xs font-bold
-                           uppercase tracking-[0.18em]
-                           text-[#B82D37]"
-                >
-                    Stay in the loop
-                </h3>
-
-                <p
-                    class="mt-5
-                           font-['Inter']
-                           text-sm leading-6
-                           text-[#513A15]"
-                >
-                    We're getting things ready.
-                    Leave your email and we'll let you
-                    know when we're live.
-                </p>
-
-                <form
-                    class="mt-6 flex
-                           border border-[#513A15]"
-                >
-
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Your email"
-                        required
-                        class="min-w-0 flex-1
-                               bg-transparent
-                               px-4 py-3
-                               font-['Inter']
-                               text-sm
-                               text-[#513A15]
-                               outline-none
-                               placeholder:text-[#513A15]/50"
-                    >
-
-                    <button
-                        type="submit"
-                        class="shrink-0
-                               bg-[#F85E29]
-                               px-5
-                               font-['Inter']
-                               text-[11px]
-                               font-bold
-                               uppercase
-                               tracking-[0.12em]
-                               text-white
-                               transition
-                               hover:bg-[#B82D37]"
-                    >
-                        Join
-                    </button>
-
-                </form>
-
-            </div>
-
+            </a>
         </div>
 
+        <!-- Navigation column 1 -->
+        <nav class="footer-links" aria-label="Shop navigation">
+            <a href="#">Shop</a>
+            <a href="#">Why Helina?</a>
+            <a href="#">Education</a>
+            <a href="#">Blog</a>
+            <a href="#">Carrier Support</a>
+            <a href="#">User Manual</a>
+        </nav>
 
-        <!-- Bottom line -->
-        <div
-            class="mt-16
-                   border-t border-[#513A15]/25
-                   pt-6"
-        >
+        <!-- Navigation column 2 -->
+        <nav class="footer-links" aria-label="Information navigation">
+            <a href="#">Product Registration</a>
+            <a href="#">Returns &amp; Warranty</a>
+            <a href="#">About us</a>
+            <a href="#">Wholesale</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">FAQ's</a>
+        </nav>
 
-            <div
-                class="flex flex-col
-                       gap-3
-                       text-xs text-[#513A15]/70
-                       md:flex-row
-                       md:items-center
-                       md:justify-between"
-            >
+        <!-- Newsletter -->
+        <div class="footer-newsletter">
+            <h3>
+                Become a Babywearing Know It All
+                <span>A surprisingly deep dive into carrying very small humans.</span>
+            </h3>
 
-                <p>
-                    © 2026 HeLina Baby. All rights reserved.
-                </p>
+            <form class="footer-signup" method="post" action="#">
+                {% csrf_token %}
+                <label class="visually-hidden" for="footer-email">
+                    Email address
+                </label>
 
-                <p>
-                    Made for every kind of day.
-                </p>
+                <input
+                    id="footer-email"
+                    type="email"
+                    name="email"
+                    placeholder="Email address"
+                    required
+                >
 
-            </div>
+                <button type="submit">I want in!</button>
+            </form>
 
+            <p class="footer-privacy">
+                By subscribing, you agree to our privacy policy and consent
+                to receive updates from our company.
+            </p>
         </div>
 
     </div>
-
 </footer>
+
 
     </main>
 

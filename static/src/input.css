@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* =========================================================
-   HELINA BABY — FONTS
-========================================================= */
 html,
 body {
     margin: 0 !important;
@@ -37,232 +34,130 @@ body {
     font-display: swap;
 }
 
+
+/* =====================================================
+   HELINA BABY — NAVBAR & HERO OVERLAP
+   Header moves up; fabric overlaps the hero;
+   logo sits at the navbar/hero boundary.
+===================================================== */
+
 :root {
-    --helina-chocolate: #513A15;
-    --helina-light-brown: #CFBDAB;
-    --helina-beige: #F6F1E4;
-    --helina-cream: #FBF8EF;
-    --helina-burgundy: #B82D37;
-    --helina-teal: #25A3A4;
-    --helina-orange: #F85E29;
-    --helina-turquoise: #2EE0E0;
+    --navbar-shift: 20px;
+    --navbar-height: 68px;
+    --navbar-fabric-height: 100px;
+    --navbar-logo-width: 145px;
+
+    /* Move navbar links, cart, and logo down together */
+    --navbar-content-drop: 10px;
+
+    --navbar-text: #513A15;
+    --navbar-accent: #F85E29;
+    --navbar-focus: #2EE0E0;
 }
 
-/* =========================================================
-   HELINA BABY — NAVBAR
-   PREMIUM / LARGER / CLEAR HOVER
-========================================================= */
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-/* =========================================================
-   HELINA BABY — NAVBAR
-========================================================= */
-
+/* HEADER */
 .site-header {
     position: relative;
-
+    top: calc(-1 * var(--navbar-shift));
     width: 100%;
-    height: 68px;
-
-    margin: 0 !important;
+    height: var(--navbar-height);
+    margin: 0 0 calc(-1 * var(--navbar-shift)) !important;
     padding: 0 !important;
-
     z-index: 100;
-
-    /* Allows logo/fabric edge to extend into hero */
     overflow: visible;
+    box-sizing: border-box;
 }
 
-
-/* =========================================================
-   FABRIC / SHREDDED HEADER
-========================================================= */
-
+/* FABRIC — extends down into the hero */
 .navbar-fabric {
     position: absolute;
-
-    top: 12px;
+    top: 0;
     left: 0;
-
     width: calc(100% + 20px);
-    height: 68px;
-
+    height: var(--navbar-fabric-height);
     display: block;
-
     margin: 0 !important;
     padding: 0 !important;
-
     object-fit: fill;
-
     z-index: 20;
-
     pointer-events: none;
 }
 
-
-/* =========================================================
-   NAVBAR CONTENT
-========================================================= */
-
+/* NAVIGATION CONTENT */
 .navbar-inner {
     position: relative;
-
     width: 100%;
-    height: 68px;
-
-    /*
-       IMPORTANT:
-       Keeps left navigation on the left
-       and right navigation on the right.
-    */
+    height: var(--navbar-height);
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
     box-sizing: border-box;
-
     padding: 0 28px;
-
     z-index: 100;
+
+    /* Moves links and cart down without moving the fabric */
+    transform: translateY(var(--navbar-content-drop));
 }
 
-
-/* =========================================================
-   LEFT NAVIGATION
-========================================================= */
-
-.navbar-left {
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: flex-start;
-
-    gap: 34px;
-
-    z-index: 40;
-
-    pointer-events: auto;
-
-    flex: 1;
-}
-
-
-/* =========================================================
-   RIGHT NAVIGATION
-========================================================= */
-
+.navbar-left,
 .navbar-right {
     position: relative;
-
     display: flex;
-
     align-items: center;
-    justify-content: flex-end;
-
-    gap: 32px;
-
-    z-index: 40;
-
-    pointer-events: auto;
-
     flex: 1;
+    min-width: 0;
+    z-index: 40;
+    pointer-events: auto;
 }
 
+.navbar-left {
+    justify-content: flex-start;
+    gap: 34px;
+}
 
-/* =========================================================
-   NAV LINKS
-========================================================= */
+.navbar-right {
+    justify-content: flex-end;
+    gap: 32px;
+}
 
+/* NAVIGATION LINKS */
 .navbar-link {
     position: relative;
-
     display: inline-flex;
-
     align-items: center;
-
-    color: #513A15;
-
-    font-family: "Inter", sans-serif;
-
-    font-size: 13px;
-
-    font-weight: 800;
-
-    line-height: 1;
-
-    white-space: nowrap;
-
-    text-decoration: none;
-
-    z-index: 45;
-
     padding: 8px 0;
-
-    transition:
-        color .25s ease,
-        transform .25s ease;
+    color: var(--navbar-text);
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    z-index: 45;
+    transition: color .25s ease, transform .25s ease;
 }
-
-
-/* =========================================================
-   WAVY / SHREDDED HOVER UNDERLINE
-========================================================= */
 
 .navbar-link::after {
     content: "";
-
     position: absolute;
-
     left: -2px;
     bottom: -3px;
-
     width: 0;
     height: 8px;
-
-    background: #F85E29;
-
+    background: var(--navbar-accent);
     clip-path: polygon(
-        0 55%,
-        8% 15%,
-        17% 70%,
-        27% 5%,
-        37% 60%,
-        48% 20%,
-        58% 75%,
-        68% 10%,
-        78% 62%,
-        89% 18%,
-        100% 55%,
-        100% 85%,
-        89% 48%,
-        78% 92%,
-        68% 40%,
-        58% 95%,
-        48% 42%,
-        37% 90%,
-        27% 38%,
-        17% 95%,
-        8% 42%,
-        0 85%
+        0 55%, 8% 15%, 17% 70%, 27% 5%,
+        37% 60%, 48% 20%, 58% 75%, 68% 10%,
+        78% 62%, 89% 18%, 100% 55%,
+        100% 85%, 89% 48%, 78% 92%, 68% 40%,
+        58% 95%, 48% 42%, 37% 90%, 27% 38%,
+        17% 95%, 8% 42%, 0 85%
     );
-
     transition: width .3s ease;
 }
 
-
-/* =========================================================
-   LINK HOVER
-========================================================= */
-
 .navbar-link:hover {
-    color: #F85E29;
-
+    color: var(--navbar-accent);
     transform: translateY(-2px);
 }
 
@@ -270,148 +165,69 @@ body {
     width: 100%;
 }
 
-
-/* =========================================================
-   LINK FOCUS
-========================================================= */
-
 .navbar-link:focus-visible {
-    color: #F85E29;
-
-    outline: 2px solid #2EE0E0;
+    color: var(--navbar-accent);
+    outline: 2px solid var(--navbar-focus);
     outline-offset: 5px;
 }
 
-
-/* =========================================================
-   CENTER LOGO
-========================================================= */
-
+/* LOGO — centered on the navbar/hero boundary */
 .navbar-logo {
     position: absolute;
-
-    /*
-       TRUE CENTER OF SCREEN
-    */
     left: 50%;
-    top: 69px;
-
-    width: 145px;
-
+    top: calc(var(--navbar-height) + var(--navbar-content-drop));
+    width: var(--navbar-logo-width);
+    height: auto;
     transform: translate(-50%, -50%);
-
-    z-index: 60;
-
     display: block;
-
+    z-index: 110;
     pointer-events: auto;
-
-    transition:
-        transform .3s ease,
-        filter .3s ease;
+    transition: transform .3s ease, filter .3s ease;
 }
-
-
-/* =========================================================
-   LOGO IMAGE
-========================================================= */
 
 .navbar-logo img {
     display: block;
-
     width: 100%;
     height: auto;
-
-    filter:
-        drop-shadow(
-            0 3px 3px
-            rgba(81, 58, 21, .16)
-        );
+    filter: drop-shadow(0 3px 3px rgba(81, 58, 21, .16));
 }
-
-
-/* =========================================================
-   LOGO HOVER
-========================================================= */
 
 .navbar-logo:hover {
-    transform:
-        translate(-50%, -50%)
-        scale(1.07);
-
-    filter:
-        drop-shadow(
-            0 7px 9px
-            rgba(81, 58, 21, .22)
-        );
+    transform: translate(-50%, -50%) scale(1.07);
+    filter: drop-shadow(0 7px 9px rgba(81, 58, 21, .22));
 }
 
-
-/* =========================================================
-   SHOPPING CART
-========================================================= */
-
+/* SHOPPING CART */
 .navbar-cart {
     position: relative;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
+    flex-shrink: 0;
     width: 24px;
     height: 24px;
-
-    color: #513A15;
-
+    color: var(--navbar-text);
     z-index: 45;
-
     pointer-events: auto;
-
     text-decoration: none;
-
-    flex-shrink: 0;
-
-    transition:
-        color .25s ease,
-        transform .25s ease;
+    transition: color .25s ease, transform .25s ease;
 }
-
-
-/* =========================================================
-   CART ICON
-========================================================= */
 
 .navbar-cart svg {
     display: block;
-
     width: 21px;
     height: 21px;
-
     fill: none;
-
     stroke: currentColor;
-
     stroke-width: 1.7;
-
     stroke-linecap: round;
     stroke-linejoin: round;
-
-    transition:
-        transform .25s ease;
+    transition: transform .25s ease;
 }
 
-
-/* =========================================================
-   CART HOVER
-========================================================= */
-
 .navbar-cart:hover {
-    color: #F85E29;
-
-    transform:
-        translateY(-2px)
-        scale(1.08);
+    color: var(--navbar-accent);
+    transform: translateY(-2px) scale(1.08);
 }
 
 .navbar-cart:hover svg {
@@ -419,257 +235,156 @@ body {
 }
 
 
-/* =========================================================
-   HERO — BEHIND NAVBAR
-========================================================= */
+/* RESPONSIVE NAVBAR SPACING */
+@media (max-width: 768px) {
+    .navbar-inner {
+        padding: 0 16px;
+    }
 
-/* =========================================================
-   HERO SECTION
-========================================================= */
+    .navbar-left {
+        gap: 14px;
+    }
 
-.hero-section {
-    position: relative;
+    .navbar-right {
+        gap: 14px;
+    }
 
-    width: 100%;
-    min-height: calc(100vh - 68px);
+    .navbar-link {
+        font-size: 11px;
+    }
 
-    overflow: hidden;
-
-    z-index: 1;
-
-    border-bottom: 8px solid #25A3A4;
+    .navbar-logo {
+        width: 115px;
+    }
 }
 
 
-/* =========================================================
-   HERO IMAGE
-========================================================= */
+/* HERO — keep its normal position and stacking */
+.hero-section {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    margin-top: 20px;
+}
 
 .hero-family-image {
     position: absolute;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
-
     object-fit: cover;
     object-position: center center;
-
     display: block;
-
     z-index: 0;
 }
 
-
-/* =========================================================
-   HERO CONTENT
-========================================================= */
-
 .hero-content {
     position: absolute;
-
     left: 8%;
-
-    /* MOVE CONTENT UP */
     bottom: 24%;
-
+    transform: none;
     z-index: 20;
-
     width: auto;
-
     pointer-events: none;
 }
-
-
-/* =========================================================
-   HERO TITLE
-========================================================= */
 
 .hero-title {
     margin: 0;
     padding: 0;
-
     font-family: "Montserrat Arabic", "Montserrat", sans-serif;
-
-    /*
-       Figma is approximately 60px,
-       not 70–90px.
-    */
     font-size: 60px;
-
     font-weight: 800;
-
     line-height: 0.86;
-
     letter-spacing: -0.045em;
-
     color: #ffffff;
-
     white-space: nowrap;
 }
 
-
-/* =========================================================
-   TITLE LINES
-========================================================= */
-
 .hero-title span {
     display: block;
-
     margin: 0;
     padding: 0;
 }
 
-
-/* =========================================================
-   WAITLIST BUTTON
-========================================================= */
-
 .hero-waitlist {
     position: relative;
-
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
-
     gap: 8px;
-
     width: 154px;
     height: 41px;
-
     margin-top: 23px;
-
+    transform: none;
     overflow: hidden;
-
     box-sizing: border-box;
-
     border: 0;
-    border-radius: 5px;
-
+    border-radius: 12px !important;
     background: #F85E29;
-
     color: #ffffff;
-
     text-decoration: none;
-
     pointer-events: auto;
-
     cursor: pointer;
-
-    box-shadow:
-        0 3px 8px rgba(0, 0, 0, 0.16);
-
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
     transition:
         transform 0.25s ease,
         background-color 0.25s ease,
         box-shadow 0.25s ease;
 }
 
-
-/* =========================================================
-   BUTTON TEXT
-========================================================= */
-
 .hero-waitlist-text {
     position: relative;
-
     z-index: 3;
-
     font-family: "Inter", sans-serif;
-
     font-size: 10px;
-
     font-weight: 800;
-
     letter-spacing: 0.08em;
-
     line-height: 1;
-
     white-space: nowrap;
 }
 
-
-/* =========================================================
-   BUTTON ARROW
-========================================================= */
-
 .hero-waitlist-arrow {
     position: relative;
-
     z-index: 3;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     width: 18px;
     height: 18px;
-
     border: 1px solid rgba(255, 255, 255, 0.8);
-
     border-radius: 50%;
-
     font-family: Arial, sans-serif;
-
     font-size: 12px;
-
     line-height: 1;
-
     transition:
         transform 0.25s ease,
         background-color 0.25s ease,
         color 0.25s ease;
 }
 
-
-/* =========================================================
-   BUTTON SHINE
-========================================================= */
-
 .hero-button-shine {
     position: absolute;
-
     top: 0;
     bottom: 0;
-
     left: -80%;
-
     width: 55%;
-
     background: rgba(255, 255, 255, 0.18);
-
     transform: skewX(-20deg);
-
     pointer-events: none;
-
     transition: left 0.65s ease;
-
     z-index: 2;
 }
 
-
-/* =========================================================
-   BUTTON HOVER
-========================================================= */
-
 .hero-waitlist:hover {
     transform: translateY(-2px);
-
     background: #FF7040;
-
-    box-shadow:
-        0 7px 16px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 7px 16px rgba(0, 0, 0, 0.22);
 }
 
 .hero-waitlist:hover .hero-waitlist-arrow {
     transform: translateX(3px);
-
     background: #ffffff;
-
     color: #F85E29;
 }
 
@@ -677,36 +392,19 @@ body {
     left: 130%;
 }
 
-
-/* =========================================================
-   BUTTON ACTIVE
-========================================================= */
-
 .hero-waitlist:active {
     transform: translateY(0) scale(0.98);
 }
 
-
-/* =========================================================
-   BUTTON FOCUS
-========================================================= */
-
 .hero-waitlist:focus-visible {
     outline: 2px solid #2EE0E0;
-
     outline-offset: 4px;
 }
 
-
-/* =========================================================
-   DESKTOP
-========================================================= */
-
 @media (min-width: 1400px) {
-
     .hero-content {
-        left: 11%;
-        bottom: 8.5%;
+        left: calc(11% + 40px);
+        bottom: calc(8.5% - 45px);
     }
 
     .hero-title {
@@ -714,16 +412,10 @@ body {
     }
 }
 
-
-/* =========================================================
-   LAPTOP
-========================================================= */
-
 @media (max-width: 1100px) {
-
     .hero-content {
-        left: 8%;
-        bottom: 8%;
+        left: calc(8% + 40px);
+        bottom: calc(8% - 45px);
     }
 
     .hero-title {
@@ -731,16 +423,10 @@ body {
     }
 }
 
-
-/* =========================================================
-   TABLET
-========================================================= */
-
 @media (max-width: 850px) {
-
     .hero-content {
-        left: 7%;
-        bottom: 7%;
+        left: calc(7% + 25px);
+        bottom: calc(7% - 30px);
     }
 
     .hero-title {
@@ -748,55 +434,28 @@ body {
     }
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
 @media (max-width: 600px) {
-
     .hero-section {
         min-height: calc(100vh - 60px);
     }
 
     .hero-content {
-        left: 7vw;
-        bottom: 6vh;
+        left: calc(7vw + 15px);
+        bottom: calc(6vh - 20px);
     }
 
     .hero-title {
         font-size: clamp(44px, 13vw, 56px);
-
         line-height: 0.88;
-
         letter-spacing: -0.04em;
     }
 
     .hero-waitlist {
         width: 150px;
         height: 40px;
-
         margin-top: 20px;
     }
 }
-/* =========================================================
-   BRAND COLOURS
-========================================================= */
-
-:root {
-    --helina-chocolate: #513A15;
-    --helina-light-brown: #CFBDAB;
-    --helina-beige: #F6F1E4;
-    --helina-cream: #FBF8EF;
-    --helina-burgundy: #B82D37;
-    --helina-teal: #25A3A4;
-    --helina-orange: #F85E29;
-    --helina-turquoise: #2EE0E0;
-}
-
-/* =========================================================
-   GLOBAL
-========================================================= */
 
 html {
     scroll-behavior: smooth;
@@ -823,196 +482,102 @@ h3 {
     font-family: "Helina Baby", sans-serif !important;
 }
 
-/* =========================================================
-   HERO — COMING SOON
-========================================================= */
 
-/* =========================================================
-   HELINA BABY — COMING SOON FABRIC TAG
-   Current Design
-========================================================= */
-
-
-/* =========================================================
-   MAIN COMING SOON TAG
-========================================================= */
+/* =========================================
+   HELINA BABY — COMING SOON BADGE
+========================================= */
 
 .coming-soon-image {
     position: absolute;
-
-    /* Position */
-    top: -15;
+    top: -15px;
     right: 3.8vw;
-
     width: 340px;
-
-    /* Layering */
     z-index: 35;
-
-    /* Behaviour */
     display: block;
     cursor: pointer;
     text-decoration: none;
-
-    /* Hanging point */
     transform-origin: 50% 0%;
-
-    /* Smooth pendulum */
-    animation:
-        comingSoonSwing 6s
-        cubic-bezier(.45, .05, .55, .95)
-        infinite;
-
-    will-change: transform;
-
-    transition:
-        filter .4s ease;
+    animation: comingSoonSwing 6s cubic-bezier(.45, .05, .55, .95) infinite;
+    transition: filter .4s ease;
 }
 
-
-/* =========================================================
-   SMOOTH 45° PENDULUM
-========================================================= */
-
 @keyframes comingSoonSwing {
-
-    0% {
-        transform: rotate(-45deg);
+    0%, 100% {
+        transform: rotate(-15deg);
     }
 
     50% {
-        transform: rotate(45deg);
-    }
-
-    100% {
-        transform: rotate(-45deg);
+        transform: rotate(15deg);
     }
 }
 
-
-/* =========================================================
-   IMAGE
-========================================================= */
+/* Badge image */
 
 .coming-soon-image img {
     display: block;
-
     width: 100%;
     height: auto;
-
-    max-width: none;
-
     object-fit: contain;
-
     background: transparent;
-
     user-select: none;
     -webkit-user-drag: none;
-
-    transition:
-        transform .4s ease,
-        filter .4s ease;
+    transition: transform .4s ease, filter .4s ease;
 }
 
-
-/* =========================================================
-   HOVER
-========================================================= */
+/* Hover */
 
 .coming-soon-image:hover {
     animation-play-state: paused;
-
-    filter:
-        drop-shadow(
-            0 18px 28px
-            rgba(81, 58, 21, .22)
-        );
+    filter: drop-shadow(0 18px 28px rgba(81, 58, 21, .22));
 }
-
 
 .coming-soon-image:hover img {
     transform: scale(1.025);
-
-    filter:
-        brightness(1.04)
-        saturate(1.04);
+    filter: brightness(1.04) saturate(1.04);
 }
 
-
-/* =========================================================
-   POPUP — "BE THE FIRST TO KNOW"
-========================================================= */
+/* Popup */
 
 .coming-soon-popup {
     position: absolute;
-
     left: 50%;
     bottom: -18px;
-
     display: flex;
     align-items: center;
     gap: 8px;
-
     padding: 9px 15px;
-
     background: #FBF8EF;
     color: #513A15;
-
     border-radius: 999px;
-
     font-family: "Inter", sans-serif;
     font-size: 10px;
     font-weight: 800;
     letter-spacing: .05em;
-
     white-space: nowrap;
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, .18);
-
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .18);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-
-    transform:
-        translate(-50%, 12px)
-        scale(.88);
-
+    transform: translate(-50%, 12px) scale(.88);
     transition:
         opacity .3s ease,
         visibility .3s ease,
         transform .4s cubic-bezier(.2, .8, .2, 1);
-
     z-index: 50;
 }
-
-
-/* =========================================================
-   POPUP DOT
-========================================================= */
 
 .popup-dot {
     width: 7px;
     height: 7px;
-
     flex-shrink: 0;
-
     border-radius: 50%;
-
     background: #F85E29;
-
-    box-shadow:
-        0 0 0 4px rgba(248, 94, 41, .14);
-
-    animation:
-        popupPulse 1.8s ease-in-out infinite;
+    box-shadow: 0 0 0 4px rgba(248, 94, 41, .14);
+    animation: popupPulse 1.8s ease-in-out infinite;
 }
 
-
 @keyframes popupPulse {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: scale(1);
         opacity: 1;
     }
@@ -1023,111 +588,75 @@ h3 {
     }
 }
 
-
-/* =========================================================
-   SHOW POPUP
-========================================================= */
-
 .coming-soon-image:hover .coming-soon-popup {
     opacity: 1;
     visibility: visible;
-
-    transform:
-        translate(-50%, 0)
-        scale(1);
+    transform: translate(-50%, 0) scale(1);
 }
 
-
-/* =========================================================
-   FLOATING STAR / BADGE
-========================================================= */
+/* Floating badge */
 
 .coming-soon-bubble {
     position: absolute;
-
     top: -14px;
     right: -14px;
-
     width: 34px;
     height: 34px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 50%;
-
     background: #F85E29;
     color: #FBF8EF;
-
     font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 800;
-
-    box-shadow:
-        0 6px 16px rgba(0, 0, 0, .18);
-
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .18);
     transition:
         transform .35s ease,
         background .35s ease,
         box-shadow .35s ease;
-
     z-index: 45;
 }
 
-
-/* =========================================================
-   BADGE HOVER
-========================================================= */
-
 .coming-soon-image:hover .coming-soon-bubble {
-    transform:
-        rotate(15deg)
-        scale(1.12);
-
+    transform: rotate(15deg) scale(1.12);
     background: #B82D37;
-
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, .25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
 }
 
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
+/* Keyboard accessibility */
 
 .coming-soon-image:focus-visible {
     outline: 3px solid #2EE0E0;
     outline-offset: 5px;
 }
 
+/* Large screens */
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
+@media (min-width: 1440px) {
     .coming-soon-image {
-        animation: none;
-        transform: rotate(0deg);
-    }
-
-    .popup-dot {
-        animation: none;
+        right: 4vw;
+        width: 370px;
     }
 }
 
+/* Laptop and tablet */
 
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 768px) {
-
+@media (max-width: 1100px) {
     .coming-soon-image {
         right: 2vw;
-        width: 250px;
+        width: 300px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+    .coming-soon-image {
+        top: 0;
+        right: -10px;
+        width: 230px;
     }
 
     .coming-soon-popup {
@@ -1136,143 +665,12 @@ h3 {
     }
 
     .coming-soon-bubble {
-        width: 30px;
-        height: 30px;
-
         top: -10px;
         right: -10px;
-
+        width: 30px;
+        height: 30px;
         font-size: 14px;
     }
-}
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .coming-soon-image {
-        animation: none;
-    }
-
-    .coming-soon-image,
-    .coming-soon-image img,
-    .coming-soon-popup,
-    .coming-soon-bubble {
-        transition: none;
-    }
-}
-/* =========================================================
-   LARGE SCREENS
-========================================================= */
-
-@media (min-width: 1440px) {
-
-    .coming-soon-image {
-        right: 4vw;
-
-        width: 370px;
-    }
-}
-
-
-/* =========================================================
-   LAPTOP / TABLET
-========================================================= */
-
-@media (max-width: 1100px) {
-
-    .coming-soon-image {
-        right: 2vw;
-
-        width: 300px;
-    }
-}
-
-
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .coming-soon-image {
-        animation: none;
-    }
-
-    .coming-soon-image,
-    .coming-soon-image img,
-    .coming-soon-popup,
-    .coming-soon-bubble {
-        transition: none;
-    }
-}
-/* =========================================================
-   LARGE SCREENS
-========================================================= */
-
-@media (min-width: 1440px) {
-
-    .coming-soon-image {
-        right: 4vw;
-
-        width: 370px;
-    }
-}
-
-
-/* =========================================================
-   LAPTOP / TABLET
-========================================================= */
-
-@media (max-width: 1100px) {
-
-    .coming-soon-image {
-        right: 2vw;
-
-        width: 300px;
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 768px) {
-
-    .coming-soon-image {
-
-        right: -10px;
-
-        top: 0;
-
-        width: 230px;
-
-        transform: rotate(1deg);
-    }
-
-    .coming-soon-image:hover {
-
-        transform:
-            translateY(3px)
-            rotate(-1deg)
-            scale(1.02);
-    }
-}
-
-/* ---------------------------------------------------------
-   MOBILE
---------------------------------------------------------- */
-
-@media (max-width: 768px) {
 
     .site-header {
         height: 76px;
@@ -1280,9 +678,7 @@ h3 {
 
     .navbar-inner {
         height: 76px;
-
         justify-content: center;
-
         padding: 0 20px;
     }
 
@@ -1295,187 +691,299 @@ h3 {
         width: 105px;
     }
 }
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+    .coming-soon-image,
+    .coming-soon-image img,
+    .coming-soon-popup,
+    .coming-soon-bubble,
+    .popup-dot {
+        animation: none;
+        transition: none;
+    }
+
+    .coming-soon-image {
+        transform: rotate(0deg);
+    }
+}
+
+
+
+
+
+/* =========================================
+   WE HEAR YOU — COMPLETE REFERENCE DESIGN
+========================================= */
+
+
 /* =========================================================
-   SECTION 2 — WE HEAR YOU
-   Fabric overlaps hero and remains visible on all edges
+   WE HEAR YOU — COMPLETE CSS
+   Fabric edges, stitching, artwork, content and responsiveness
+========================================================= */
+
+
+/* =========================================================
+   HELINA BABY — WE HEAR YOU
+   Hero overlap, fabric edges, stitching and responsive layout
+========================================================= */
+
+:root {
+    /* ADJUSTABLE SETTINGS */
+    --hero-height: 100vh;
+    --we-hear-hero-overlap: 55px;
+    --we-hear-fabric-height: 48px;
+    --we-hear-stitch-inset: 14px;
+
+    /* COLORS */
+    --we-hear-bg: #25A3A4;
+    --we-hear-white: #FBF8EF;
+    --we-hear-aqua: #48D9D5;
+    --we-hear-orange: #F85E29;
+    --we-hear-red: #B82D37;
+
+    /* FABRIC IMAGE */
+    --we-hear-fabric:
+        url("/static/assets/images/we-hear-you-fabric.png");
+
+    /*
+       Stitch pattern.
+       This generates stitching in CSS.
+       Replace with your actual stitch asset URL if available.
+    */
+    --we-hear-stitch:
+        repeating-linear-gradient(
+            90deg,
+            rgba(251, 248, 239, 0.95) 0 4px,
+            transparent 4px 9px
+        );
+}
+
+/* =========================================================
+   HERO AND SECTION STACKING
+========================================================= */
+
+.hero,
+.hero-section {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================================
+   MAIN SECTION
 ========================================================= */
 
 .we-hear-you {
     position: relative;
+    isolation: isolate;
+    z-index: 2;
 
     width: 100%;
-    min-height: 520px;
+    height: var(--hero-height);
+    min-height: 600px;
+
+    /* Pull the section upward over the hero */
+    margin-top: calc(-1 * var(--we-hear-hero-overlap));
+    margin-bottom: 0;
+
+    padding: 0;
+    box-sizing: border-box;
 
     display: grid;
-    grid-template-columns: 48% 52%;
+    grid-template-columns: 44% 56%;
+    align-items: center;
 
-    /*
-       IMPORTANT:
-       Allow the fabric to extend outside this section.
-    */
+    background-color: var(--we-hear-bg);
+
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+
     overflow: visible;
-
-    /*
-       Remove the fabric background from the section itself.
-    */
-    background: #25A3A4;
-
-    /*
-       Pull the entire section slightly over the hero.
-    */
-    margin-top: -20px;
-
-    /*
-       Keeps the artwork/text in their correct position.
-    */
-    padding-top: 20px;
-
-    z-index: 50;
 }
 
-
 /* =========================================================
-   FABRIC BORDER / BACKGROUND
+   TOP FABRIC EDGE
+   Sits at the top of the raised section
 ========================================================= */
 
 .we-hear-you::before {
     content: "";
-
     position: absolute;
 
-    /*
-       Extend above the section so the fabric
-       sits ON TOP of the hero.
-    */
-    top: -28px;
+    top: 0;
+    left: 0;
+    right: 0;
 
-    /*
-       Extend below the section so the
-       bottom torn edge remains visible.
-    */
-    bottom: -20px;
+    height: var(--we-hear-fabric-height);
+
+    background-image: var(--we-hear-fabric);
+    background-repeat: repeat-x;
+    background-position: center top;
+
+    /* Preserve image proportions */
+    background-size: auto var(--we-hear-fabric-height);
+
+    pointer-events: none;
+    z-index: 4;
+}
+
+/* =========================================================
+   BOTTOM FABRIC EDGE
+========================================================= */
+
+.we-hear-you::after {
+    content: "";
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: var(--we-hear-fabric-height);
+
+    background-image: var(--we-hear-fabric);
+    background-repeat: repeat-x;
+    background-position: center bottom;
+    background-size: auto var(--we-hear-fabric-height);
+
+    pointer-events: none;
+    z-index: 4;
+}
+
+/* =========================================================
+   STITCHING
+   Requires .we-hear-you-stitch inside the section HTML
+========================================================= */
+
+.we-hear-you-stitch {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    pointer-events: none;
+    z-index: 6;
+}
+
+.we-hear-you-stitch::before,
+.we-hear-you-stitch::after {
+    content: "";
+    position: absolute;
 
     left: 0;
     right: 0;
 
-    background-image: url("/static/assets/images/we-hear-you-fabric.png");
-    background-repeat: no-repeat;
-    background-position: center center;
+    height: 8px;
 
-    /*
-       Full width and full height.
-       This makes the fabric align with the hero.
-    */
-    background-size: 100% 100%;
-
-    /*
-       Fabric is behind the artwork and text,
-       but above the hero.
-    */
-    z-index: 0;
+    background-image: var(--we-hear-stitch);
+    background-repeat: repeat-x;
+    background-position: left center;
+    background-size: auto 8px;
 
     pointer-events: none;
 }
 
+.we-hear-you-stitch::before {
+    top: var(--we-hear-stitch-inset);
+}
+
+.we-hear-you-stitch::after {
+    bottom: var(--we-hear-stitch-inset);
+}
 
 /* =========================================================
-   CONTENT ABOVE FABRIC
+   ARTWORK — LEFT
 ========================================================= */
 
 .we-hear-you-artwork {
-    position: absolute;
-
-    top: 4%;
-    left: 4%;
-
-    z-index: 5;
-
-    width: 39%;
-    height: 92%;
+    position: relative;
+    align-self: stretch;
 
     display: flex;
     align-items: center;
     justify-content: center;
-}
 
+    width: 100%;
+    min-width: 0;
 
-.we-hear-you-copy {
-    position: absolute;
+    padding: 45px 3% 45px 8%;
+    box-sizing: border-box;
 
-    top: 21%;
-    left: 46.5%;
-
-    z-index: 10;
-
-    width: 47%;
-}
-
-/* ---------------------------------------------------------
-   LEFT ARTWORK
---------------------------------------------------------- */
-
-.we-hear-you-artwork {
-    position: absolute;
-    top: 4%;
-    left: 4%;
     z-index: 5;
-
-    width: 39%;
-    height: 92%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .we-hear-you-artwork img {
     display: block;
+
     width: 100%;
-    height: 100%;
+    max-width: 440px;
+    max-height: 78%;
+    height: auto;
+
     object-fit: contain;
     object-position: center;
 }
 
-/* ---------------------------------------------------------
-   RIGHT CONTENT
---------------------------------------------------------- */
+/* =========================================================
+   CONTENT — RIGHT
+========================================================= */
 
 .we-hear-you-copy {
-    position: absolute;
-    top: 21%;
-    left: 46.5%;
-    z-index: 10;
+    position: relative;
+    align-self: center;
 
-    width: 47%;
+    width: 100%;
+    max-width: 800px;
+    min-width: 0;
+
+    margin: 0;
+    padding: 45px 7% 45px 1%;
+
+    box-sizing: border-box;
+    z-index: 5;
 }
 
 .we-hear-you-heading {
     margin: 0;
+
     font-family: "Inter", sans-serif !important;
-    font-size: clamp(20px, 2.05vw, 31px);
+    font-size: clamp(24px, 2.2vw, 36px);
     font-weight: 800;
-    line-height: 1.04;
+
+    line-height: 1.12;
     letter-spacing: -0.025em;
-    color: var(--helina-cream);
+
+    color: var(--we-hear-white);
 }
 
 .we-hear-you-script {
-    margin: 24px 0 0;
+    margin: 14px 0 0;
+
     font-family: "Helina Baby", sans-serif !important;
-    font-size: clamp(25px, 2.35vw, 35px);
+    font-size: clamp(28px, 2.7vw, 40px);
     font-weight: 400;
-    line-height: 1;
-    color: var(--helina-turquoise);
+
+    line-height: 1.1;
+    color: var(--we-hear-aqua);
 }
 
 .we-hear-you-description {
-    max-width: 620px;
-    margin: 18px 0 0;
+    max-width: 680px;
+
+    margin: 16px 0 0;
+
     font-family: "Inter", sans-serif;
-    font-size: clamp(12px, 1.02vw, 16px);
+    font-size: clamp(14px, 1.05vw, 17px);
     font-weight: 400;
-    line-height: 1.25;
-    color: var(--helina-cream);
+
+    line-height: 1.5;
+    color: var(--we-hear-white);
 }
 
 .we-hear-you-button {
@@ -1483,21 +991,26 @@ h3 {
     align-items: center;
     justify-content: center;
 
-    min-width: 240px;
-    margin-top: 27px;
-    padding: 13px 30px;
+    min-width: 210px;
+
+    margin-top: 22px;
+    padding: 13px 20px;
 
     border: 0;
-    background: var(--helina-orange);
+    border-radius: 5px;
+
+    background: var(--we-hear-orange);
 
     font-family: "Inter", sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 800;
-    line-height: 1;
-    letter-spacing: 0.08em;
+
+    line-height: 1.2;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     text-decoration: none;
-    color: var(--helina-cream);
+
+    color: var(--we-hear-white);
 
     transition:
         transform 0.2s ease,
@@ -1506,38 +1019,50 @@ h3 {
 
 .we-hear-you-button:hover {
     transform: translateY(-2px);
-    background: var(--helina-burgundy);
+    background: var(--we-hear-red);
 }
 
 /* =========================================================
    TABLET
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 900px) and (min-width: 701px) {
+    :root {
+        --we-hear-hero-overlap: 35px;
+        --we-hear-fabric-height: 38px;
+    }
+
     .we-hear-you {
-        min-height: 700px;
+        height: 650px;
+        min-height: 0;
+        grid-template-columns: 40% 60%;
     }
 
     .we-hear-you-artwork {
-        top: 4%;
-        left: 2%;
-        width: 43%;
-        height: 70%;
+        padding-left: 5%;
+        padding-right: 3%;
+    }
+
+    .we-hear-you-artwork img {
+        max-width: 320px;
+        max-height: 72%;
     }
 
     .we-hear-you-copy {
-        top: 20%;
-        left: 46%;
-        width: 50%;
+        padding-right: 5%;
     }
 
     .we-hear-you-heading {
-        font-size: 22px;
+        font-size: clamp(22px, 2.5vw, 29px);
+    }
+
+    .we-hear-you-script {
+        font-size: 30px;
     }
 
     .we-hear-you-description {
-        font-size: 13px;
-        line-height: 1.35;
+        font-size: 14px;
+        line-height: 1.45;
     }
 }
 
@@ -1546,673 +1071,609 @@ h3 {
 ========================================================= */
 
 @media (max-width: 700px) {
-    .we-hear-you {
-        min-height: auto;
-        padding: 70px 24px 60px;
+    :root {
+        --we-hear-hero-overlap: 20px;
+        --we-hear-fabric-height: 30px;
+        --we-hear-stitch-inset: 9px;
     }
 
-    
+    .we-hear-you {
+        height: auto;
+        min-height: 0;
+
+        padding: 45px 22px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
 
     .we-hear-you-artwork {
-        position: relative;
-        top: auto;
-        left: auto;
-
         width: 100%;
         height: auto;
-        max-width: 390px;
-
-        margin: 0 auto 35px;
+        padding: 0;
     }
 
     .we-hear-you-artwork img {
-        width: 100%;
+        width: 88%;
+        max-width: 320px;
+        max-height: none;
         height: auto;
     }
 
     .we-hear-you-copy {
-        position: relative;
-        top: auto;
-        left: auto;
-
         width: 100%;
-        max-width: 600px;
-
-        margin: 0 auto;
+        max-width: 540px;
+        padding: 0;
     }
 
     .we-hear-you-heading {
-        font-size: 24px;
-        line-height: 1.06;
+        font-size: clamp(22px, 6vw, 30px);
+        line-height: 1.12;
     }
 
     .we-hear-you-script {
-        margin-top: 22px;
+        margin-top: 12px;
         font-size: 30px;
     }
 
     .we-hear-you-description {
-        margin-top: 18px;
-        font-size: 15px;
-        line-height: 1.4;
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 1.5;
     }
 
     .we-hear-you-button {
+        margin-top: 16px;
         min-width: 0;
-        margin-top: 24px;
-        padding: 14px 22px;
-        font-size: 11px;
+        padding: 12px 18px;
+    }
+
+    .we-hear-you-stitch::before,
+    .we-hear-you-stitch::after {
+        height: 6px;
+        background-size: auto 6px;
     }
 }
 
 /* =========================================================
-   SECTION 3 — ONE CARRIER, BUILT FOR DAY ONE TO DAY 1000
-   ========================================================= */
+   REDUCED MOTION
+========================================================= */
 
-.made-real-life {
-    position: relative;
-    display: grid;
-    grid-template-columns: 48% 52%;
-    align-items: center;
-    min-height: 720px;
-    padding: 65px 6vw 70px;
-    overflow: hidden;
-    background: var(--helina-cream);
+@media (prefers-reduced-motion: reduce) {
+    .we-hear-you-button {
+        transition: none;
+    }
+
+    .we-hear-you-button:hover {
+        transform: none;
+    }
 }
 
 
-/* -------------------------
-   TEXT
-   ------------------------- */
+
+/* =========================================
+   SECTION 3 — ONE CARRIER
+   Full hero-height layout
+========================================= */
+
+
+.made-real-life {
+    position: relative;
+    isolation: isolate;
+
+    display: grid;
+    grid-template-columns: 52% 48%;
+    align-items: center;
+    column-gap: 0;
+
+    height: var(--hero-height, 100vh);
+    min-height: 620px;
+
+    padding: 35px 5.5vw;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    background-color: var(--helina-cream);
+    background-image: url("/static/assets/images/vector.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: cover;
+}
+
+/* =========================================
+   LEFT — TEXT CONTENT
+========================================= */
 
 .real-life-content {
     position: relative;
     z-index: 10;
-    max-width: 570px;
-    padding-left: 2vw;
+
+    width: 100%;
+    max-width: 465px;
+    padding-left: 2.5vw;
+    box-sizing: border-box;
 }
 
 .real-life-title {
     margin: 0;
-    color: var(--helina-brown);
+    color: var(--helina-chocolate);
+
     font-family: "Inter", sans-serif;
-    font-size: clamp(2rem, 3vw, 3.15rem);
+    font-size: clamp(25px, 2.5vw, 36px);
     font-weight: 800;
-    line-height: 1.02;
-    letter-spacing: -0.035em;
+    line-height: 0.98;
+    letter-spacing: -0.045em;
 }
 
 .real-life-orange-title {
-    margin: 20px 0 0;
+    margin: 12px 0 0;
     color: var(--helina-orange);
+
     font-family: "Inter", sans-serif;
-    font-size: clamp(1.15rem, 1.7vw, 1.55rem);
+    font-size: clamp(12px, 1.05vw, 15px);
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.25;
 }
 
 .real-life-intro {
-    max-width: 500px;
-    margin: 26px 0 0;
-    color: var(--helina-brown);
+    max-width: 400px;
+    margin: 20px 0 0;
+    color: var(--helina-chocolate);
+
     font-family: "Inter", sans-serif;
-    font-size: 15px;
-    line-height: 1.35;
+    font-size: 11px;
+    line-height: 1.4;
 }
 
 .real-life-hear-title {
-    margin: 18px 0 0;
-    color: var(--helina-brown);
+    margin: 14px 0 0;
+    color: var(--helina-chocolate);
+
     font-family: "Inter", sans-serif;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 800;
+    line-height: 1.25;
 }
 
 .real-life-text {
-    max-width: 500px;
-    margin: 12px 0 0;
-    color: var(--helina-brown);
+    max-width: 400px;
+    margin: 8px 0 0;
+    color: var(--helina-chocolate);
+
     font-family: "Inter", sans-serif;
-    font-size: 15px;
-    line-height: 1.35;
+    font-size: 10px;
+    line-height: 1.4;
 }
 
-.real-life-button {
-    display: inline-flex;
+/* =========================================
+   WHY HELINA BUTTON
+   Cyan background + white text
+========================================= */
+
+.made-real-life .real-life-button,
+.made-real-life a.real-life-button {
+    position: relative;
+    z-index: 20;
+
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
     align-items: center;
     justify-content: center;
-    margin-top: 27px;
-    min-width: 143px;
-    padding: 10px 23px;
-    border-radius: 7px;
-    background: var(--helina-turquoise);
-    color: white;
+
+    width: auto;
+    min-width: 90px;
+    min-height: 30px;
+
+    margin: 17px 0 0;
+    padding: 8px 15px;
+
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+
+    background-color: #20CED2;
+    color: #FFFFFF !important;
+
     font-family: "Inter", sans-serif;
-    font-size: 13px;
+    font-size: 9px;
     font-weight: 800;
-    letter-spacing: 0.08em;
-    text-decoration: none;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-decoration: none !important;
+    white-space: nowrap;
+
+    cursor: pointer;
+    pointer-events: auto;
+
     transition:
-        transform 0.25s ease,
-        background 0.25s ease;
+        background-color 0.25s ease,
+        transform 0.25s ease;
 }
 
-.real-life-button:hover {
+.made-real-life .real-life-button:hover,
+.made-real-life a.real-life-button:hover {
+    background-color: #13B8BD;
+    color: #FFFFFF !important;
     transform: translateY(-2px);
-    background: var(--helina-teal);
 }
 
+.made-real-life .real-life-button:focus-visible {
+    outline: 2px solid var(--helina-chocolate);
+    outline-offset: 3px;
+}
 
-/* -------------------------
-   IMAGE / SCRAPBOOK
-   ------------------------- */
+/* =========================================
+   RIGHT — IMAGE COLLAGE
+========================================= */
 
 .real-life-visual {
     position: relative;
-    width: 100%;
-    min-height: 620px;
+    z-index: 1;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
 }
 
 .real-life-collage {
     position: relative;
 
-    width: min(620px, 94%);
-
-    /*
-       BOTH IMAGES MUST SHARE THIS EXACT FRAME
-    */
+    width: min(100%, 390px);
+    max-height: 100%;
     aspect-ratio: 1222 / 1287;
 
-    overflow: hidden;
-
-    cursor: ew-resize;
-
+    overflow: visible;
     isolation: isolate;
+    cursor: ew-resize;
 }
 
-
-/*
-   The complete scrapbook image stays fixed.
-   This means the stickers, frame and decorations
-   don't move.
-*/
+/* Main scrapbook image */
 
 .real-life-scrapbook {
     position: absolute;
-
     inset: 0;
 
+    display: block;
     width: 100%;
     height: 100%;
 
-    display: block;
-
-    /*
-       EXACT SAME SIZING AS SECOND IMAGE
-    */
     object-fit: contain;
     object-position: center;
 
     z-index: 1;
-
     pointer-events: none;
-
     user-select: none;
 }
 
-
-/*
-   SECOND PHOTO
-
-   This sits only over the photograph opening,
-   not over the scrapbook decorations.
-*/
+/* Second image revealed by cursor movement */
 
 .real-life-hover-photo {
     position: absolute;
-
     inset: 0;
 
     width: 100%;
     height: 100%;
-
     overflow: hidden;
 
     z-index: 5;
-
     pointer-events: none;
 
-    /*
-       START COMPLETELY HIDDEN.
-
-       The FIRST image underneath remains visible.
-    */
-    clip-path: inset(
-        0 100% 0 0
-    );
-
-    /*
-       Smooth transition rather than a sudden jump.
-    */
-    transition:
-        clip-path 0.12s linear;
-
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.12s linear;
     will-change: clip-path;
 }
 
-
-/* =========================================================
-   SECOND IMAGE
-========================================================= */
-
 .real-life-hover-photo img {
     position: absolute;
-
     inset: 0;
 
+    display: block;
     width: 100%;
     height: 100%;
 
-    display: block;
-
-    /*
-       EXACT SAME BEHAVIOUR AS FIRST IMAGE
-    */
     object-fit: contain;
     object-position: center;
 
     pointer-events: none;
-
     user-select: none;
-
     -webkit-user-drag: none;
 }
 
-
-/* =========================================================
-   VERY SUBTLE EDGE BLEND
-========================================================= */
-
 .real-life-hover-photo::after {
     content: "";
-
     position: absolute;
-
     top: 0;
+    right: 0;
     bottom: 0;
 
     width: 12px;
 
-    right: 0;
-
-    background:
-        linear-gradient(
-            to right,
-            transparent,
-            rgba(251,248,239,.22)
-        );
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(251, 248, 239, 0.22)
+    );
 
     pointer-events: none;
 }
 
-
-/* -------------------------
-   RESPONSIVE
-   ------------------------- */
+/* =========================================
+   TABLET
+========================================= */
 
 @media (max-width: 900px) {
-
     .made-real-life {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 60px 6vw;
+        grid-template-columns: 1fr 0.9fr;
+        height: var(--hero-height, 100vh);
+        min-height: 600px;
+        padding: 30px 4vw;
     }
 
     .real-life-content {
-        order: 1;
-        max-width: 650px;
+        max-width: 100%;
         padding-left: 0;
     }
 
-    .real-life-visual {
-        order: 2;
-        min-height: auto;
-    }
-
-    .real-life-collage {
-        width: min(620px, 95%);
-    }
-}
-
-
-@media (max-width: 640px) {
-
-    .made-real-life {
-        padding: 50px 20px;
-    }
-
     .real-life-title {
-        font-size: 2rem;
-    }
-
-    .real-life-orange-title {
-        font-size: 1.15rem;
+        font-size: clamp(23px, 3vw, 30px);
     }
 
     .real-life-intro,
     .real-life-text {
-        font-size: 14px;
-    }
-
-    .real-life-visual {
-        min-height: 430px;
+        font-size: 10px;
     }
 
     .real-life-collage {
+        width: min(100%, 330px);
+    }
+}
+
+/* =========================================
+   MOBILE
+   Allow natural height for readable content
+========================================= */
+
+@media (max-width: 640px) {
+    .made-real-life {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+
+        height: auto;
+        min-height: 100vh;
+
+        gap: 28px;
+        padding: 45px 22px;
+
+        background-position: center;
+        background-size: cover;
+    }
+
+    .real-life-content {
+        order: 1;
         width: 100%;
+        max-width: 100%;
+        padding-left: 0;
+    }
+
+    .real-life-title {
+        font-size: clamp(27px, 7vw, 35px);
+        line-height: 1;
+    }
+
+    .real-life-orange-title {
+        margin-top: 12px;
+        font-size: 13px;
+    }
+
+    .real-life-intro {
+        margin-top: 18px;
+    }
+
+    .real-life-intro,
+    .real-life-text {
+        max-width: 100%;
+        font-size: 12px;
+        line-height: 1.45;
+    }
+
+    .real-life-hear-title {
+        margin-top: 16px;
+        font-size: 15px;
+    }
+
+    .made-real-life .real-life-button {
+        min-height: 32px;
+        margin-top: 16px;
+        padding: 9px 15px;
+        font-size: 10px;
+    }
+
+    .real-life-visual {
+        order: 2;
+        height: auto;
+        min-height: 0;
+        justify-content: center;
+    }
+
+    .real-life-collage {
+        width: min(100%, 340px);
+        max-height: none;
     }
 }
 
 
-
-/* =========================================================
-   SECTION 4 — INFORMED BY SCIENCE
-   GROUPED FIGMA ARTWORK
-========================================================= */
-
 .science-section {
     position: relative;
-
     width: 100%;
     min-height: 620px;
-
     display: grid;
     grid-template-columns: 45% 55%;
-
     overflow: hidden;
-
     background: #2b1b12;
 }
-
-
-/* =========================================================
-   KITCHEN BACKGROUND
-========================================================= */
 
 .science-kitchen-bg {
     position: absolute;
     inset: 0;
-
     width: 100%;
     height: 100%;
-
     object-fit: cover;
     object-position: center center;
-
     z-index: 0;
 }
 
 .science-kitchen-overlay {
     position: absolute;
     inset: 0;
-
     background: rgba(35, 20, 10, 0.10);
-
     z-index: 1;
 }
 
-
-/* =========================================================
-   LEFT PHOTO AREA
-========================================================= */
-
 .science-photo-area {
     position: relative;
-
     z-index: 5;
-
     min-height: 620px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 40px 30px 40px 45px;
-
     overflow: visible;
 }
-
-
-/* =========================================================
-   GROUPED FIGMA IMAGE
-========================================================= */
 
 .science-grouped-image {
     display: block;
-
     width: 400px;
     max-width: 75%;
-
     height: auto;
     object-fit: contain;
-
     position: relative;
     z-index: 5;
-
     transform: translateX(65px) rotate(0deg);
 }
 
-
-/* =========================================================
-   OPTIONAL VISUAL WRAPPER
-========================================================= */
-
 .science-visual {
     position: relative;
-
     width: 100%;
     height: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     overflow: visible;
-
     z-index: 5;
 }
-
-
-/* =========================================================
-   RIGHT CONTENT AREA
-========================================================= */
 
 .science-content-area {
     position: relative;
     z-index: 10;
     min-height: 620px;
-
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-
     padding-top: 125px;
-
     padding-left: 70px;
     padding-right: 70px;
 }
 
-
-/* =========================================================
-   CONTENT
-========================================================= */
-
 .science-content {
     width: 100%;
     max-width: 760px;
-
     padding: 0;
 }
 
-
-/* =========================================================
-   MAIN HEADING
-========================================================= */
-
 .science-title {
     margin: 0;
-
     color: #FBF8EF;
-
     font-family: "Inter", sans-serif !important;
-
     font-size: clamp(
         2.3rem,
         3.1vw,
         3.3rem
     );
-
     font-weight: 800;
-
     line-height: 0.98;
-
     letter-spacing: -0.045em;
-
     text-shadow:
         2px 2px 4px rgba(0, 0, 0, 0.35);
 }
 
-
-/* =========================================================
-   TURQUOISE SUBTITLE
-========================================================= */
-
 .science-subtitle {
     margin: 10px 0 0;
-
     color: #2EE0E0;
-
     font-family: "Inter", sans-serif !important;
-
     font-size: clamp(
         1.15rem,
         1.5vw,
         1.5rem
     );
-
     font-weight: 800;
-
     line-height: 1.05;
-
     letter-spacing: -0.02em;
-
     text-shadow:
         1px 2px 3px rgba(0, 0, 0, 0.35);
 }
 
-
-/* =========================================================
-   BODY TEXT
-========================================================= */
-
 .science-text {
     max-width: 700px;
-
     margin: 22px 0 0;
-
     color: #FBF8EF;
-
     font-family: "Inter", sans-serif;
-
     font-size: 15px;
-
     font-weight: 400;
-
     line-height: 1.35;
-
     text-shadow:
         1px 1px 3px rgba(0, 0, 0, 0.45);
 }
-
-
-/* Second paragraph */
 
 .science-text + .science-text {
     margin-top: 18px;
 }
 
-
-/* =========================================================
-   BUTTON
-========================================================= */
-
 .science-button {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
-
     margin-top: 22px;
-
     padding: 13px 28px;
-
     background: #F85E29;
-
     border: 1px solid #F85E29;
     border-radius: 4px;
-
     color: #FFFFFF;
-
     font-family: "Inter", sans-serif;
-
     font-size: 12px;
-
     font-weight: 800;
-
     line-height: 1;
-
     letter-spacing: 0.08em;
-
     text-decoration: none;
-
     transition:
         transform 0.2s ease,
         background-color 0.2s ease;
 }
 
-
 .science-button:hover {
     background: #B82D37;
-
     border-color: #B82D37;
-
     transform: translateY(-2px);
 }
 
-
-/* =========================================================
-   TOP TORN PAPER EDGE
-========================================================= */
-
 .science-section::before {
     content: "";
-
     position: absolute;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 12px;
-
     background: #FBF8EF;
-
     z-index: 50;
-
     clip-path: polygon(
         0 0,
         100% 0,
@@ -2253,26 +1714,15 @@ h3 {
     );
 }
 
-
-/* =========================================================
-   BOTTOM TORN PAPER EDGE
-========================================================= */
-
 .science-section::after {
     content: "";
-
     position: absolute;
-
     bottom: 0;
     left: 0;
-
     width: 100%;
     height: 12px;
-
     background: #FBF8EF;
-
     z-index: 50;
-
     clip-path: polygon(
         0 40%,
         4% 65%,
@@ -2313,20 +1763,13 @@ h3 {
     );
 }
 
-
-/* =========================================================
-   LARGE DESKTOP
-========================================================= */
-
 @media (min-width: 1400px) {
-
     .science-section {
         min-height: 650px;
     }
 
     .science-photo-area {
         min-height: 650px;
-
         padding-left: 50px;
         padding-right: 20px;
     }
@@ -2338,7 +1781,6 @@ h3 {
 
     .science-content-area {
         min-height: 650px;
-
         padding-top: 125px;
         padding-left: 70px;
         padding-right: 90px;
@@ -2358,13 +1800,7 @@ h3 {
     }
 }
 
-
-/* =========================================================
-   TABLET
-========================================================= */
-
 @media (max-width: 1000px) {
-
     .science-section {
         grid-template-columns: 45% 55%;
         min-height: 600px;
@@ -2372,12 +1808,11 @@ h3 {
 
     .science-photo-area {
         min-height: 600px;
-
         padding:
-            40px
-            15px
-            40px
-            25px;
+                40px
+                15px
+                40px
+                25px;
     }
 
     .science-grouped-image {
@@ -2386,7 +1821,6 @@ h3 {
 
     .science-content-area {
         min-height: 600px;
-
         padding-top: 100px;
         padding-left: 20px;
         padding-right: 30px;
@@ -2405,28 +1839,19 @@ h3 {
     }
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
 @media (max-width: 700px) {
-
     .science-section {
         display: block;
-
         min-height: auto;
-
         padding-bottom: 50px;
     }
 
     .science-photo-area {
         min-height: auto;
-
         padding:
-            55px
-            20px
-            20px;
+                55px
+                20px
+                20px;
     }
 
     .science-grouped-image {
@@ -2435,11 +1860,10 @@ h3 {
 
     .science-content-area {
         min-height: auto;
-
         padding:
-            35px
-            24px
-            60px;
+                35px
+                24px
+                60px;
     }
 
     .science-content {
@@ -2456,188 +1880,97 @@ h3 {
 
     .science-text {
         font-size: 14px;
-
         line-height: 1.45;
     }
 
     .science-button {
         margin-top: 20px;
-
         padding:
-            13px
-            24px;
+                13px
+                24px;
     }
 }
 
-/* =========================================================
-   SECTION 5 — WORN AND REVIEWED
-========================================================= */
-
 .reviews-section {
     position: relative;
-
     width: 100%;
     min-height: 520px;
-
-    /*
-       Move Section 5 down 20px.
-    */
     margin-top: 12px;
-
     margin-bottom: 0;
-
     padding: 65px 40px;
-
     overflow: visible;
-
     background: transparent;
-
     z-index: 30;
-
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-
-/* =========================================================
-   FABRIC
-   THIS CREATES BOTH TORN EDGES
-========================================================= */
 
 .reviews-section::before {
     content: "";
-
     position: absolute;
-
-    /*
-       Extend beyond the section on BOTH sides.
-       This allows the torn edges to cover
-       the neighbouring sections.
-    */
     top: -30px;
     bottom: -30px;
-
     left: 0;
     right: 0;
-
     background-image:
         url("/static/assets/images/vector-2.png");
-
     background-repeat: no-repeat;
-
-    /*
-       Stretch the actual fabric across
-       the entire section.
-    */
     background-size: 100% 100%;
-
     background-position: center center;
-
-    /*
-       Fabric behind the cards,
-       but above the neighbouring sections.
-    */
     z-index: -1;
-
     pointer-events: none;
 }
 
-
-/* =========================================================
-   REVIEW CONTENT
-========================================================= */
-
 .reviews-inner {
     position: relative;
-
     width: 100%;
     max-width: 1120px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     z-index: 5;
 }
 
-
-/* =========================================================
-   TITLE
-========================================================= */
-
 .reviews-title {
     margin: 0 0 28px;
-
     font-family: "Inter", sans-serif !important;
-
     font-size: clamp(24px, 2vw, 31px);
-
     font-weight: 800;
-
     line-height: 1;
-
     color: var(--helina-chocolate);
-
     text-align: center;
 }
 
-
-/* =========================================================
-   REVIEW SLIDER
-========================================================= */
-
 .reviews-slider {
     position: relative;
-
     width: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     gap: 40px;
 }
 
-
-/* =========================================================
-   REVIEW CARD
-========================================================= */
-
 .review-card {
     position: relative;
-
     width: 250px;
     min-height: 300px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     flex-shrink: 0;
 }
-
-
-/* =========================================================
-   PHOTO
-========================================================= */
 
 .review-photo,
 .review-video {
     position: relative;
-
     width: 95px;
     height: 95px;
-
     background: var(--helina-cream);
-
     border: 7px solid var(--helina-cream);
-
     box-shadow:
         2px 4px 8px rgba(0, 0, 0, 0.20);
-
     overflow: hidden;
-
     z-index: 4;
 }
 
@@ -2645,16 +1978,9 @@ h3 {
 .review-video img {
     width: 100%;
     height: 100%;
-
     display: block;
-
     object-fit: cover;
 }
-
-
-/* =========================================================
-   PHOTO ROTATIONS
-========================================================= */
 
 .review-card-one .review-photo {
     transform: rotate(5deg);
@@ -2668,67 +1994,37 @@ h3 {
     transform: rotate(6deg);
 }
 
-
-/* =========================================================
-   VIDEO PLAY BUTTON
-========================================================= */
-
 .review-play {
     position: absolute;
-
     left: 50%;
     top: 50%;
-
     transform: translate(-50%, -50%);
-
     width: 34px;
     height: 34px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 50%;
-
     background: var(--helina-teal);
-
     color: white;
-
     font-size: 13px;
-
     padding-left: 2px;
-
     box-shadow:
         0 2px 5px rgba(0, 0, 0, 0.25);
 }
 
-
-/* =========================================================
-   PAPER
-========================================================= */
-
 .review-paper {
     position: relative;
-
     width: 220px;
     min-height: 190px;
-
     margin-top: -10px;
-
     padding: 75px 25px 25px;
-
     background: var(--helina-cream);
-
     box-shadow:
         2px 5px 10px rgba(0, 0, 0, 0.12);
-
     z-index: 2;
-
     transform: rotate(-3deg);
 }
-
-
-/* Individual rotations */
 
 .review-card-one .review-paper {
     transform: rotate(-4deg);
@@ -2742,78 +2038,39 @@ h3 {
     transform: rotate(-5deg);
 }
 
-
-/* =========================================================
-   STARS
-========================================================= */
-
 .review-stars {
     margin-bottom: 10px;
-
     color: var(--helina-orange);
-
     font-size: 12px;
-
     letter-spacing: 2px;
-
     text-align: center;
 }
-
-
-/* =========================================================
-   QUOTE
-========================================================= */
 
 .review-quote {
     margin: 0;
-
     font-family: "Inter", sans-serif;
-
     font-size: 10px;
-
     line-height: 1.35;
-
     color: var(--helina-chocolate);
-
     text-align: center;
 }
-
-
-/* =========================================================
-   NAME
-========================================================= */
 
 .review-name {
     margin: 12px 0 0;
-
     font-family: "Inter", sans-serif;
-
     font-size: 10px;
-
     font-weight: 800;
-
     color: var(--helina-chocolate);
-
     text-align: center;
 }
 
-
-/* =========================================================
-   PINS
-========================================================= */
-
 .review-pin {
     position: absolute;
-
     width: 28px;
     height: 28px;
-
     z-index: 10;
-
     border-radius: 50%;
-
     background: var(--helina-orange);
-
     box-shadow:
         1px 2px 4px rgba(0, 0, 0, 0.20);
 }
@@ -2826,9 +2083,7 @@ h3 {
 .review-card-two .review-pin {
     top: 38px;
     right: 24px;
-
     background: var(--helina-cream);
-
     border: 3px solid var(--helina-chocolate);
 }
 
@@ -2837,34 +2092,18 @@ h3 {
     right: 18px;
 }
 
-
-/* =========================================================
-   ARROWS
-========================================================= */
-
 .reviews-arrow {
     position: absolute;
-
     top: 50%;
-
     transform: translateY(-50%);
-
     border: 0;
-
     background: transparent;
-
     color: var(--helina-chocolate);
-
     font-family: "Inter", sans-serif;
-
     font-size: 36px;
-
     line-height: 1;
-
     cursor: pointer;
-
     z-index: 20;
-
     transition:
         transform 0.2s ease,
         color 0.2s ease;
@@ -2872,7 +2111,6 @@ h3 {
 
 .reviews-arrow:hover {
     color: var(--helina-burgundy);
-
     transform:
         translateY(-50%)
         scale(1.15);
@@ -2886,37 +2124,20 @@ h3 {
     right: -25px;
 }
 
-
-/* =========================================================
-   SHOP BUTTON
-========================================================= */
-
 .reviews-button {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
-
     margin-top: 28px;
-
     padding: 12px 25px;
-
     background: var(--helina-orange);
-
     color: white;
-
     font-family: "Inter", sans-serif;
-
     font-size: 11px;
-
     font-weight: 800;
-
     letter-spacing: 0.08em;
-
     text-transform: uppercase;
-
     text-decoration: none;
-
     transition:
         transform 0.2s ease,
         background-color 0.2s ease;
@@ -2924,17 +2145,10 @@ h3 {
 
 .reviews-button:hover {
     transform: translateY(-2px);
-
     background: var(--helina-burgundy);
 }
 
-
-/* =========================================================
-   TABLET
-========================================================= */
-
 @media (max-width: 1000px) {
-
     .reviews-section {
         padding-left: 25px;
         padding-right: 25px;
@@ -2961,27 +2175,18 @@ h3 {
     }
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
 @media (max-width: 700px) {
-
     .reviews-section {
         min-height: auto;
-
         margin-top: -25px;
         margin-bottom: -25px;
-
         padding:
-            55px 20px
-            70px;
+                55px 20px
+                70px;
     }
 
     .reviews-slider {
         flex-direction: column;
-
         gap: 35px;
     }
 
@@ -2998,82 +2203,42 @@ h3 {
     }
 }
 
-
-
-/* ---------------------------------------------------------
-   HERO
-   Hero starts at the VERY TOP underneath the navbar.
---------------------------------------------------------- */
 main {
     position: relative;
     margin: 0;
     padding: 0;
 }
 
-/* =========================================================
-   HERO SECTION
-========================================================= */
-
 main > section:first-child {
     position: relative;
-
     min-height: 100vh !important;
-
     margin: 0 !important;
     padding: 0;
-
     overflow: hidden;
-
-    /* Creates a clean stacking layer */
     isolation: isolate;
-
     z-index: 0;
 }
-
-
-/* ---------------------------------------------------------
-   HERO IMAGE
-   Position/composition stays unchanged
---------------------------------------------------------- */
 
 main > section:first-child > img {
     position: absolute;
-
     inset: 0;
-
     width: 100%;
     height: 100%;
-
     object-fit: cover;
     object-position: center;
-
     z-index: 0;
 }
 
-
-/* ---------------------------------------------------------
-   HERO OVERLAY
---------------------------------------------------------- */
-
 main > section:first-child > .bg-black\/20 {
     position: absolute;
-
     inset: 0;
-
     z-index: 1;
 }
 
-
-/* ---------------------------------------------------------
-   HERO CONTENT
---------------------------------------------------------- */
-
 main > section:first-child > .relative {
     position: relative;
-
     z-index: 10;
 }
-
 
 .hero-family-image {
     transform: none !important;
@@ -3082,300 +2247,179 @@ main > section:first-child > .relative {
     z-index: 0 !important;
 }
 
-/* =========================================================
-   JOURNEY SECTION
-   YOUR JOURNEY DOESN'T END AT CHECKOUT
-========================================================= */
-
 .journey-section {
     position: relative;
     width: 100%;
-
     height: 520px;
-
-    /* Move the section downward */
     margin-top: 20px;
-
     overflow: hidden;
-
     background-image:
         url("/static/assets/images/redVector.png");
-
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100% 100%;
-
     z-index: 20;
 }
 
-
-/* =========================================================
-   INNER
-========================================================= */
-
 .journey-inner {
     position: relative;
-
     width: 100%;
     max-width: 1200px;
     min-height: 390px;
-
     margin: 0 auto;
     padding: 55px 7vw;
-
     display: grid;
     grid-template-columns: 48% 52%;
-
     align-items: center;
 }
 
-
-/* =========================================================
-   LEFT CONTENT
-========================================================= */
-
 .journey-copy {
     position: relative;
-
     max-width: 390px;
-
     z-index: 5;
-
     color: #FFFFFF;
 }
 
-
 .journey-copy h2 {
     margin: 0;
-
     font-family: "Inter", sans-serif;
-
     font-size: clamp(24px, 3vw, 36px);
-
     font-weight: 800;
-
     line-height: .95;
-
     letter-spacing: -0.04em;
-
     color: #2EE0E0;
 }
-
 
 .journey-copy h2 span {
     display: block;
 }
 
-
 .journey-copy h3 {
     margin: 7px 0 14px;
-
     font-family: "Inter", sans-serif;
-
     font-size: 13px;
-
     font-weight: 800;
-
     line-height: 1.1;
-
     color: #FFFFFF;
 }
-
 
 .journey-copy p {
     margin: 0 0 12px;
-
     max-width: 370px;
-
     font-family: "Inter", sans-serif;
-
     font-size: 8px;
-
     font-weight: 500;
-
     line-height: 1.45;
-
     color: #FFFFFF;
 }
-
 
 .journey-copy .journey-subtitle {
     margin-top: 18px;
     margin-bottom: 10px;
 }
 
-
 .journey-copy a {
     color: #FFFFFF;
-
     font-weight: 800;
-
     text-decoration: underline;
-
     text-underline-offset: 2px;
-
     transition:
         color .25s ease,
         opacity .25s ease;
 }
 
-
 .journey-copy a:hover {
     color: #2EE0E0;
 }
 
-
-/* =========================================================
-   RIGHT VISUAL
-========================================================= */
-
 .journey-visual {
     position: relative;
-
     width: 100%;
     height: 330px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     z-index: 4;
 }
 
-
-/* =========================================================
-   PHOTO
-========================================================= */
-
 .journey-photo {
     position: relative;
-
     width: 285px;
     height: 230px;
-
     padding: 8px;
-
     background: #FBF8EF;
-
     transform:
         rotate(-10deg)
         translateX(15px);
-
     box-shadow:
         0 8px 20px rgba(0, 0, 0, .15);
-
     z-index: 3;
-
     transition:
         transform .5s cubic-bezier(.2,.8,.2,1),
         box-shadow .5s ease;
 }
 
-
 .journey-photo img {
     display: block;
-
     width: 100%;
     height: 100%;
-
     object-fit: cover;
 }
 
-
-/* =========================================================
-   LOGO
-========================================================= */
-
 .journey-logo {
     position: absolute;
-
     left: 23%;
     bottom: 37px;
-
     width: 100px;
     height: auto;
-
     transform: rotate(-5deg);
-
     z-index: 6;
-
     filter:
         drop-shadow(0 3px 4px rgba(0, 0, 0, .15));
-
     transition:
         transform .4s ease;
 }
 
-
-/* =========================================================
-   HEART BADGE
-========================================================= */
-
 .journey-heart {
     position: absolute;
-
     top: 42px;
     right: 18%;
-
     width: 42px;
     height: 42px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 50%;
-
     background: #FBF8EF;
-
     color: #513A15;
-
     font-family: Arial, sans-serif;
-
     font-size: 27px;
     line-height: 1;
-
     transform: rotate(12deg);
-
     box-shadow:
         0 4px 10px rgba(0, 0, 0, .12);
-
     z-index: 7;
 }
 
-
-/* =========================================================
-   HOVER
-========================================================= */
-
 @media (hover: hover) and (pointer: fine) {
-
     .journey-photo:hover {
         transform:
-            rotate(-7deg)
-            translateX(15px)
-            translateY(-5px)
-            scale(1.025);
-
+                rotate(-7deg)
+                translateX(15px)
+                translateY(-5px)
+                scale(1.025);
         box-shadow:
-            0 14px 28px rgba(0, 0, 0, .20);
+                0 14px 28px rgba(0, 0, 0, .20);
     }
 
     .journey-photo:hover + .journey-logo {
         transform:
-            rotate(-5deg)
-            scale(1.05);
+                rotate(-5deg)
+                scale(1.05);
     }
-
 }
 
-
-/* =========================================================
-   TABLET
-========================================================= */
-
 @media (max-width: 900px) {
-
     .journey-inner {
         padding-left: 5vw;
         padding-right: 5vw;
@@ -3394,39 +2438,27 @@ main > section:first-child > .relative {
     .journey-heart {
         right: 10%;
     }
-
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
 @media (max-width: 700px) {
-
     .journey-section {
         min-height: auto;
-
         background-size: cover;
         background-position: center;
     }
 
     .journey-inner {
         min-height: auto;
-
         display: flex;
         flex-direction: column;
-
         gap: 30px;
-
         padding:
-            55px 25px
-            65px;
+                55px 25px
+                65px;
     }
 
     .journey-copy {
         max-width: 500px;
-
         text-align: left;
     }
 
@@ -3457,16 +2489,9 @@ main > section:first-child > .relative {
         height: 38px;
         font-size: 24px;
     }
-
 }
 
-
-/* =========================================================
-   SMALL PHONES
-========================================================= */
-
 @media (max-width: 420px) {
-
     .journey-inner {
         padding-left: 20px;
         padding-right: 20px;
@@ -3485,5 +2510,318 @@ main > section:first-child > .relative {
         left: 20%;
         bottom: 35px;
     }
+}
 
+/* Removed conflicting late hero button offsets. Position .hero-content as one unit. */
+
+/* FOOTER POSITION — adjust the value below */
+:root {
+    --footer-move-up: 35px;
+}
+
+.helina-footer {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    min-height: 174px;
+
+    /* Moves the footer upward */
+    margin-top: calc(-1 * var(--footer-move-up));
+    margin-bottom: 0;
+
+    padding: 35px 5.5% 22px;
+    box-sizing: border-box;
+
+    background-color: #FBF6EC;
+    background-image: url("/static/assets/images/fabric_footer.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100% auto;
+
+    color: #49351F;
+    font-family: "Inter", sans-serif;
+    overflow: visible;
+}
+
+.helina-footer *,
+.helina-footer *::before,
+.helina-footer *::after {
+    box-sizing: border-box;
+}
+
+.helina-footer .footer-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1440px;
+    min-height: 115px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 125px 100px 125px minmax(220px, 1fr);
+    align-items: center;
+    column-gap: 22px;
+}
+
+.helina-footer .footer-brand {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.helina-footer .footer-brand a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.helina-footer .footer-logo {
+    display: block;
+    width: 112px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.helina-footer .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+    min-width: 0;
+}
+
+.helina-footer .footer-links a {
+    color: #49351F;
+    font-size: 8px;
+    font-weight: 500;
+    line-height: 1.25;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 180ms ease;
+}
+
+.helina-footer .footer-links a:hover {
+    color: #D94A32;
+}
+
+.helina-footer .footer-newsletter {
+    min-width: 0;
+    align-self: center;
+}
+
+.helina-footer .footer-newsletter h3 {
+    margin: 0 0 8px;
+    color: #49351F;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.helina-footer .footer-newsletter h3 span {
+    display: block;
+    font-weight: 600;
+}
+
+.helina-footer .footer-signup {
+    display: flex;
+    align-items: stretch;
+    gap: 7px;
+    width: 100%;
+}
+
+.helina-footer .footer-signup input {
+    flex: 1;
+    width: 0;
+    min-width: 0;
+    height: 27px;
+    padding: 0 12px;
+    border: 1px solid #C8BBA7;
+    border-radius: 4px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.45);
+    color: #49351F;
+    font-family: inherit;
+    font-size: 9px;
+}
+
+.helina-footer .footer-signup input::placeholder {
+    color: #A89D8D;
+}
+
+.helina-footer .footer-signup input:focus {
+    border-color: #E95A32;
+}
+
+.helina-footer .footer-signup button {
+    flex: 0 0 82px;
+    height: 27px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 4px;
+    background: #F4512B;
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 180ms ease;
+}
+
+.helina-footer .footer-signup button:hover {
+    background: #D94122;
+}
+
+.helina-footer .footer-privacy {
+    max-width: 330px;
+    margin: 7px 0 0;
+    color: #594731;
+    font-size: 6px;
+    line-height: 1.5;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 900px) {
+    .helina-footer {
+        padding: 45px 5% 28px;
+        background-size: 100% auto;
+    }
+
+    .helina-footer .footer-content {
+        grid-template-columns: 120px 1fr 1fr;
+        gap: 24px;
+    }
+
+    .helina-footer .footer-newsletter {
+        grid-column: 2 / 4;
+        width: 100%;
+    }
+
+    .helina-footer .footer-logo {
+        width: 105px;
+    }
+
+    .helina-footer .footer-links a {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 560px) {
+    .helina-footer {
+        padding: 45px 22px 30px;
+    }
+
+    .helina-footer .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px 18px;
+    }
+
+    .helina-footer .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .helina-footer .footer-logo {
+        width: 120px;
+    }
+
+    .helina-footer .footer-links {
+        gap: 8px;
+    }
+
+    .helina-footer .footer-links a {
+        font-size: 10px;
+        white-space: normal;
+    }
+
+    .helina-footer .footer-newsletter {
+        grid-column: 1 / -1;
+    }
+
+    .helina-footer .footer-newsletter h3 {
+        font-size: 12px;
+    }
+
+    .helina-footer .footer-signup input,
+        .helina-footer .footer-signup button {
+        height: 36px;
+        font-size: 11px;
+    }
+
+    .helina-footer .footer-signup button {
+        flex-basis: 100px;
+    }
+
+    .helina-footer .footer-privacy {
+        font-size: 8px;
+    }
+}
+
+
+
+/* =========================================
+   HERO BEHIND WE HEAR YOU FABRIC
+========================================= */
+
+/* Keep the hero below the fabric section */
+.hero {
+    position: relative;
+    z-index: 1;
+}
+
+/* Bring We Hear You above the hero */
+.we-hear-you {
+    position: relative;
+    z-index: 2;
+    isolation: isolate;
+    overflow: visible;
+}
+
+/* Fabric edges above the hero image */
+.we-hear-you::before,
+.we-hear-you::after {
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* Content remains readable */
+.we-hear-you-artwork,
+.we-hear-you-copy {
+    position: relative;
+    z-index: 5;
+}
+
+/* Stitching above the fabric */
+.we-hear-you-stitch {
+    z-index: 6;
+    pointer-events: none;
+}
+
+
+/* FIX 1: Remove the generated stitching lines */
+.we-hear-you-stitch::before,
+.we-hear-you-stitch::after {
+    background-image: none !important;
+}
+
+/* FIX 2: Align the bottom fabric edge with the section boundary */
+.we-hear-you::after {
+    bottom: 0 !important;
+}
+
+/* FIX 3: Prevent an outline or shadow on the section itself */
+.we-hear-you {
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
 }
